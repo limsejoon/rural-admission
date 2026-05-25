@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yearly Layer (Layer 4) — 매년 바뀌는 숫자 (웹 노출)",
+  "type": "object",
+  "required": ["university_id", "year", "tracks"],
+  "properties": {
+    "university_id": { "type": "string" },
+    "year": { "type": "integer" },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["track_id", "track_total_quota", "rural_quota", "rural_quota_status", "evidence_id"],
+        "properties": {
+          "track_id": { "type": "string" },
+          "track_total_quota": {
+            "type": ["integer", "null"],
+            "description": "전형 전체 모집인원(모든 대상 합산). 웹 카드에 표시되는 기본 숫자."
+          },
+          "track_total_note": { "type": "string" },
+          "rural_quota": {
+            "type": ["integer", "null"],
+            "description": "농어촌 자격자에게 배정된 인원. PDF가 농어촌을 별도 칸으로 명시한 경우에만 숫자, 합산되어 미상이면 null."
+          },
+          "rural_quota_status": {
+            "enum": ["specified", "merged", "pending"],
+            "description": "specified=농어촌 인원 별도 명시(정시 87 사례), merged=다른 대상과 합산되어 농어촌 미상(수시 183 사례, 추정 금지), pending=아직 추출 안 함"
+          },
+          "rural_quota_note": { "type": "string" },
+          "csat_group": {
+            "type": ["string", "null"],
+            "enum": ["ga", "na", "da", null],
+            "description": "정시 군. 웹에서는 숨기고 질문 시에만 제공."
+          },
+          "evidence_id": { "type": "string", "description": "Layer 5 evidence 참조" }
+        }
+      }
+    }
+  }
+}

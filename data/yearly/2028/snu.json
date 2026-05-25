@@ -1,0 +1,26 @@
+{
+  "university_id": "snu",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "snu_susi_social",
+      "track_total_quota": 183,
+      "track_total_note": "사회통합 5개 대상(농어촌·저소득·보훈·서해5도·자립) 합산 정원 내 인원. 농업생명과학대학 농생명계열은 정원 외 4명 이내 별도 선발(합계 미포함).",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "농어촌 단독 인원은 표에 명시되지 않음(사회통합에 합산). 농어촌은 0명~전체 가능.",
+      "csat_group": null,
+      "evidence_id": "ev_snu_susi_social"
+    },
+    {
+      "track_id": "snu_jeongsi_rural",
+      "track_total_quota": 180,
+      "track_total_note": "농어촌 87명 + 저소득 93명. 정원 외.",
+      "rural_quota": 87,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "농어촌 인원이 저소득과 별도로 책정되어 명시됨. 단과대학 단위까지만 명시(학과별 미명시).",
+      "csat_group": "na",
+      "evidence_id": "ev_snu_jeongsi_rural"
+    }
+  ]
+}

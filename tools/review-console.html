@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>검수 콘솔 — Rural Admission Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f1ea; --paper-2:#ebe6db; --ink:#16203a; --ink-soft:#3a4straight;
+    --ink-soft:#3b4straight; --ink-soft:#3b4660; --line:#cdc6b6; --line-strong:#b3aa95;
+    --vermilion:#c1432b; --vermilion-soft:#e8d4cc;
+    --green:#356b4f; --green-soft:#d2e2d6;
+    --amber:#9c7415; --amber-soft:#ece0c4;
+    --navy:#14213d;
+    --shadow:0 1px 0 rgba(0,0,0,.04), 0 12px 30px -18px rgba(20,33,61,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:
+      radial-gradient(120% 80% at 100% 0%, #f7f5ef 0%, var(--paper) 45%, var(--paper-2) 100%);
+    color:var(--ink); font-family:"Newsreader",Georgia,serif; font-size:15.5px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{ /* faint grain */
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.035; z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .disp{font-family:"Fraunces",serif}
+
+  header.bar{
+    position:sticky; top:0; z-index:50; background:var(--navy); color:#f4f1ea;
+    border-bottom:3px double #4a5straight; border-bottom:3px double #46527a;
+    padding:14px 22px; display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;
+    box-shadow:0 10px 30px -20px rgba(0,0,0,.8);
+  }
+  header.bar h1{font-family:"Fraunces",serif; font-weight:600; font-size:24px; margin:0; letter-spacing:.3px}
+  header.bar h1 em{font-style:italic; color:#e7b9ad; font-weight:500}
+  header.bar .sub{font-size:13px; opacity:.7; font-style:italic}
+  header.bar .spacer{flex:1}
+  header.bar .legend{display:flex; gap:14px; font-size:11.5px; letter-spacing:.4px; text-transform:uppercase; opacity:.85}
+  .legend b{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; transform:translateY(1px)}
+
+  .control{
+    display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;
+    padding:16px 22px; border-bottom:1px solid var(--line);
+    background:linear-gradient(#fbfaf6, #f1eee5);
+  }
+  .field{display:flex; flex-direction:column; gap:3px}
+  .field label{font-size:10.5px; letter-spacing:.8px; text-transform:uppercase; color:#6f6styling; color:#6f6a58; font-family:"JetBrains Mono",monospace}
+  .field input, .field select{
+    font-family:"JetBrains Mono",monospace; font-size:13px; padding:7px 9px; min-width:120px;
+    background:#fffdf8; border:1px solid var(--line-strong); border-radius:3px; color:var(--ink);
+  }
+  .field input:focus,.field select:focus{outline:2px solid #c8b9b1; border-color:var(--navy)}
+
+  button{font-family:"JetBrains Mono",monospace; cursor:pointer; border-radius:3px; font-size:12.5px;
+    padding:8px 13px; border:1px solid var(--navy); background:var(--navy); color:#f4f1ea; letter-spacing:.3px;
+    transition:transform .08s ease, box-shadow .15s ease, background .15s}
+  button:hover{transform:translateY(-1px); box-shadow:0 6px 16px -10px rgba(20,33,61,.7)}
+  button:active{transform:translateY(0)}
+  button.ghost{background:transparent; color:var(--navy)}
+  button.ghost:hover{background:#e9e3d6}
+  button.accent{background:var(--vermilion); border-color:var(--vermilion)}
+  button.go{background:var(--green); border-color:var(--green)}
+  button.go:disabled{opacity:.45; cursor:wait}
+  .filebtn{position:relative; overflow:hidden}
+  .filebtn input{position:absolute; inset:0; opacity:0; cursor:pointer}
+
+  main{display:grid; grid-template-columns: 44% 56%; gap:0; height:calc(100vh - 0px)}
+  @media(max-width:980px){ main{grid-template-columns:1fr; height:auto} }
+
+  .pdfpane{border-right:2px solid var(--line-strong); background:#ded6c6; min-height:60vh; display:flex; flex-direction:column}
+  .pdfpane .ph{flex:1; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:10px;
+    color:#7a735f; text-align:center; padding:40px; font-style:italic}
+  .pdfpane .ph .big{font-family:"Fraunces",serif; font-size:40px; color:#a89straight; color:#a89c7e}
+  iframe{width:100%; height:100%; border:0; background:#fff; flex:1}
+
+  .reviewpane{overflow:auto; padding:20px 22px 80px}
+
+  .msg{font-family:"JetBrains Mono",monospace; font-size:12.5px; padding:10px 14px; border-radius:4px; margin-bottom:16px; display:none}
+  .msg.show{display:block}
+  .msg.info{background:#e7eef0; color:#244; border-left:3px solid #4a7c86}
+  .msg.err{background:var(--vermilion-soft); color:#7a2616; border-left:3px solid var(--vermilion)}
+  .msg.ok{background:var(--green-soft); color:#1f4a36; border-left:3px solid var(--green)}
+
+  .unimeta{display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; padding:14px 16px; margin-bottom:18px;
+    border:1px solid var(--line); background:#fbfaf5; border-radius:5px}
+
+  .track{border:1px solid var(--line-strong); border-radius:6px; margin-bottom:20px; background:#fffdf8;
+    box-shadow:var(--shadow); overflow:hidden; animation:rise .5s both}
+  @keyframes rise{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  .track > .thead{display:flex; align-items:center; gap:10px; padding:12px 16px; border-bottom:1px solid var(--line);
+    background:linear-gradient(#f3efe4,#ece7da)}
+  .thead .tname{font-family:"Fraunces",serif; font-size:18px; font-weight:600; flex:1}
+  .thead .tname input{font-family:"Fraunces",serif; font-size:17px; font-weight:600; width:100%; border:0; background:transparent; color:var(--ink)}
+  .thead .tname input:focus{outline:1px dashed var(--line-strong)}
+
+  .pill{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.5px; padding:3px 8px; border-radius:999px;
+    text-transform:uppercase; border:1px solid transparent; white-space:nowrap}
+  .pill.standalone{background:var(--vermilion-soft); color:#7a2616; border-color:#d9b3a8}
+  .pill.included{background:var(--amber-soft); color:#6e5210; border-color:#d8c79a}
+  .pill.specified{background:var(--green-soft); color:#1f4a36; border-color:#aecbb6}
+  .pill.merged{background:var(--amber-soft); color:#6e5210; border-color:#d8c79a}
+  .pill.pending{background:#e5e0d3; color:#6a6450; border-color:#ccc4af}
+  .pill.verified{background:var(--green); color:#f2f7f2; border-color:var(--green)}
+  .pill.unverified{background:var(--vermilion); color:#fff3ef; border-color:var(--vermilion)}
+
+  .tbody{padding:14px 16px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px 18px}
+  .tbody .full{grid-column:1/-1}
+  .cell{display:flex; flex-direction:column; gap:3px}
+  .cell label{font-size:10px; letter-spacing:.7px; text-transform:uppercase; color:#6f6a58; font-family:"JetBrains Mono",monospace}
+  .cell input, .cell select, .cell textarea{font-family:"JetBrains Mono",monospace; font-size:12.5px; padding:6px 8px;
+    border:1px solid var(--line-strong); border-radius:3px; background:#fffdf8; color:var(--ink); width:100%}
+  .cell textarea{font-family:"Newsreader",serif; font-size:13.5px; line-height:1.45; min-height:48px; resize:vertical}
+  .cell input:focus,.cell select:focus,.cell textarea:focus{outline:2px solid #c8b9b1; border-color:var(--navy)}
+  .num input{text-align:right}
+
+  .ruled{grid-column:1/-1; border-top:1px dashed var(--line-strong); margin-top:4px; padding-top:10px}
+  .ruled .rt{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.7px; text-transform:uppercase; color:#6f6a58; margin-bottom:8px; display:flex; justify-content:space-between}
+  .colrow{display:grid; grid-template-columns:1fr 80px 30px; gap:8px; margin-bottom:6px; align-items:center}
+  .colrow input{font-family:"JetBrains Mono",monospace; font-size:12px; padding:5px 7px; border:1px solid var(--line); border-radius:3px; background:#fffdf8}
+  .colrow .x{border:1px solid var(--line); background:#f0ebdf; color:#8a5; color:#9a3b2a; padding:4px}
+  .sumchk{font-family:"JetBrains Mono",monospace; font-size:11.5px; margin-top:4px}
+  .sumchk.good{color:var(--green)} .sumchk.bad{color:var(--vermilion)}
+
+  .tfoot{display:flex; align-items:center; gap:12px; padding:10px 16px; border-top:1px solid var(--line); background:#f6f2e8}
+  .tfoot .verifybox{display:flex; align-items:center; gap:8px; font-family:"JetBrains Mono",monospace; font-size:12px}
+  .tfoot .verifybox input{width:18px; height:18px; accent-color:var(--green)}
+  .tfoot .spacer{flex:1}
+
+  .emptyhint{padding:50px 20px; text-align:center; color:#857d68; font-style:italic; border:1px dashed var(--line-strong); border-radius:6px}
+  .addtrack{width:100%; background:transparent; color:var(--navy); border:1px dashed var(--line-strong); padding:12px}
+  .addtrack:hover{background:#efeadd}
+
+  details.help{margin-bottom:18px; border:1px solid var(--line); border-radius:5px; background:#fbfaf5}
+  details.help summary{cursor:pointer; padding:10px 14px; font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.4px}
+  details.help .hc{padding:0 16px 14px; font-size:13.5px}
+  details.help code{font-family:"JetBrains Mono",monospace; background:#ece7da; padding:1px 5px; border-radius:3px; font-size:12px}
+  .spin{display:inline-block; width:11px; height:11px; border:2px solid #ffffff66; border-top-color:#fff; border-radius:50%; animation:sp .7s linear infinite; vertical-align:middle; margin-right:6px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <h1 class="disp">검수 콘솔 <em>Review Console</em></h1>
+  <span class="sub">농어촌 자격자 대학 지원 데이터 · 추출 → 대조 → 확정</span>
+  <span class="spacer"></span>
+  <div class="legend">
+    <span><b style="background:var(--vermilion)"></b>단독 / 미검수</span>
+    <span><b style="background:var(--amber)"></b>포함·합산(merged)</span>
+    <span><b style="background:var(--green)"></b>명시(specified) / 검수완료</span>
+  </div>
+</header>
+
+<div class="control">
+  <div class="field"><label>대학 ID</label><input id="uid" placeholder="snu" /></div>
+  <div class="field"><label>대학명</label><input id="uname" placeholder="서울대학교" /></div>
+  <div class="field"><label>연도</label><input id="uyear" class="mono" value="2028" style="min-width:80px"/></div>
+  <div class="field"><label>분류</label>
+    <select id="ucat"><option value="in_seoul">in_seoul</option><option value="regional_national">regional_national</option></select>
+  </div>
+  <button class="ghost filebtn">＋ PDF 불러오기<input id="pdfin" type="file" accept="application/pdf" /></button>
+  <button class="go" id="extractBtn">✦ AI 추출</button>
+  <button class="ghost filebtn">↥ JSON 불러오기<input id="jsonin" type="file" accept="application/json,.json" /></button>
+  <button class="accent" id="exportBtn">⤓ 4개 레이어 내려받기</button>
+</div>
+
+<main>
+  <section class="pdfpane">
+    <div class="ph" id="pdfPh">
+      <div class="big disp">PDF</div>
+      <div>왼쪽에 모집요강/시행계획 PDF를 띄워<br/>오른쪽 추출값을 직접 대조하세요.</div>
+    </div>
+    <iframe id="pdfFrame" style="display:none"></iframe>
+  </section>
+
+  <section class="reviewpane">
+    <div class="msg" id="msg"></div>
+
+    <details class="help">
+      <summary>이 콘솔 사용법 · 추출 에이전트가 따르는 규칙</summary>
+      <div class="hc">
+        <p><b>워크플로우</b> — ① PDF 불러오기(좌측 대조용) → ② <code>AI 추출</code>(스키마·규칙대로 자동 추출, 모두 <span class="pill unverified">unverified</span> 상태) → ③ 각 칸을 PDF와 대조하며 보정 → ④ <code>검수완료</code> 체크 → ⑤ <code>4개 레이어 내려받기</code> 후 git에 커밋.</p>
+        <p><b>에이전트 내장 규칙</b> — 농어촌 자격자가 지원 가능한 전형만 추출(일반·지역균형·저소득단독·특수/북한 단독 제외). <code>standalone</code>=농어촌 전용, <code>included</code>=다른 대상과 함께. 인원은 <code>specified</code>(농어촌 별도 명시 → 그 숫자 사용) / <code>merged</code>(합산되어 농어촌 미상 → 전체만, 농어촌 null) / <code>pending</code>. <b>PDF에 없는 숫자는 절대 추정하지 않음</b> — 없으면 null.</p>
+        <p><b>해마다</b> — 새 PDF가 와도 같은 버튼 한 번이면 같은 규칙으로 다시 추출됩니다. 구조가 그대로면 숫자만 보정하면 끝.</p>
+      </div>
+    </details>
+
+    <div class="unimeta" id="uniMeta">
+      <div class="field" style="flex:1"><label>출처 문서 (source_doc)</label><input id="usource" style="width:100%" placeholder="2028학년도 대학 신입학생 입학전형 시행계획 (2026.4.)"/></div>
+      <div class="field"><label>지역</label><input id="uregion" placeholder="서울" style="min-width:90px"/></div>
+    </div>
+
+    <div id="tracks"></div>
+    <button class="addtrack" id="addBtn">＋ 전형(트랙) 수동 추가</button>
+  </section>
+</main>
+
+<script>
+/* ---------- state ---------- */
+let state = { tracks: [] };
+let pdfBase64 = null, pdfMime = "application/pdf";
+
+const $ = id => document.getElementById(id);
+const msgEl = $("msg");
+function flash(text, kind){ msgEl.className = "msg show "+(kind||"info"); msgEl.innerHTML = text; }
+function clearMsg(){ msgEl.className = "msg"; }
+
+/* ---------- meta binding ---------- */
+["uid","uname","uyear","ucat","usource","uregion"].forEach(id=>{
+  $(id).addEventListener("input", ()=>{ state[ {uid:"university_id",uname:"university",uyear:"year",ucat:"category",usource:"source_doc",uregion:"region"}[id] ] = id==="uyear" ? parseInt($(id).value||"0",10) : $(id).value; });
+});
+function syncMetaInputs(){
+  $("uid").value=state.university_id||""; $("uname").value=state.university||"";
+  $("uyear").value=state.year||2028; $("ucat").value=state.category||"in_seoul";
+  $("usource").value=state.source_doc||""; $("uregion").value=state.region||"";
+}
+
+/* ---------- PDF load ---------- */
+$("pdfin").addEventListener("change", async e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const url = URL.createObjectURL(f);
+  $("pdfFrame").src = url; $("pdfFrame").style.display="block"; $("pdfPh").style.display="none";
+  pdfBase64 = await fileToB64(f); pdfMime = f.type || "application/pdf";
+  if(!state.source_doc){ } // leave as-is
+  flash("PDF를 불러왔습니다. 좌측에서 페이지를 대조하거나 <b>AI 추출</b>을 눌러 자동 추출하세요.", "info");
+});
+function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(",")[1]);r.onerror=rej;r.readAsDataURL(file);});}
+
+/* ---------- JSON import (continue editing) ---------- */
+$("jsonin").addEventListener("change", e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+      const obj=JSON.parse(r.result);
+      state = normalizeImport(obj);
+      syncMetaInputs(); renderTracks();
+      flash("JSON을 불러왔습니다. 이어서 보정하세요.","ok");
+    }catch(err){ flash("JSON 파싱 실패: "+err.message,"err"); } };
+  r.readAsText(f);
+});
+/* accepts either a console-bundle or a single yearly/structure file */
+function normalizeImport(obj){
+  if(obj.tracks && obj.tracks[0] && ("rural_type" in obj.tracks[0] || "track_total_quota" in obj.tracks[0]))
+    return obj; // already console shape
+  return obj; // best effort
+}
+
+/* ---------- AI extraction agent ---------- */
+$("extractBtn").addEventListener("click", runExtraction);
+async function runExtraction(){
+  if(!pdfBase64){ flash("먼저 PDF를 불러오세요. (AI 추출은 불러온 PDF를 읽습니다)","err"); return; }
+  const btn=$("extractBtn"); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="spin"></span>추출 중…';
+  flash("PDF를 읽어 스키마·규칙대로 추출하고 있습니다. 표가 많은 문서는 20~40초 걸릴 수 있어요.","info");
+  try{
+    const res = await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        model:"claude-sonnet-4-20250514", max_tokens:8000,
+        messages:[{ role:"user", content:[
+          { type:"document", source:{ type:"base64", media_type:pdfMime, data:pdfBase64 } },
+          { type:"text", text: EXTRACTION_PROMPT }
+        ]}]
+      })
+    });
+    const data = await res.json();
+    if(data.error){ throw new Error(data.error.message || JSON.stringify(data.error)); }
+    let text = (data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("\n").trim();
+    text = text.replace(/^```json\s*/i,"").replace(/^```\s*/i,"").replace(/```\s*$/,"").trim();
+    const obj = JSON.parse(text);
+    obj.year = obj.year || parseInt($("uyear").value||"2028",10);
+    state = obj; syncMetaInputs(); renderTracks();
+    const n = (obj.tracks||[]).length;
+    flash("추출 완료 — 농어촌 관련 전형 <b>"+n+"개</b>를 찾았습니다. 모두 <span class='pill unverified'>unverified</span>이니 PDF와 대조 후 검수완료 처리하세요.","ok");
+  }catch(err){
+    flash("AI 추출 실패: "+err.message+"<br/><span style='font-size:11.5px'>이 기능은 Claude 아티팩트 환경에서 동작합니다. 외부에서 열었다면 추출은 로컬에서 수행하고 <b>JSON 불러오기</b>로 이어가세요.</span>","err");
+  }finally{ btn.disabled=false; btn.innerHTML=old; }
+}
+
+const EXTRACTION_PROMPT = [
+"첨부된 대학 입학전형 PDF에서 '농어촌 자격자가 지원 가능한 전형'만 추출해 아래 JSON 스키마로만 응답하라.",
+"마크다운·설명·코드펜스 없이 순수 JSON 객체 하나만 출력한다.",
+"",
+"[추출 대상] 농어촌 학생이 지원자격에 포함된 전형만. 일반전형·지역균형·저소득 단독·특수교육/북한이탈 단독 등 농어촌이 지원할 수 없는 전형은 제외한다.",
+"",
+"[핵심 규칙]",
+"1) rural_type: 'standalone'=농어촌만 선발하는 전형, 'included'=농어촌이 다른 대상과 함께 묶인 전형.",
+"2) rural_quota_status: 'specified'=표/문서에 농어촌 인원이 별도 칸·행으로 명시됨(그 숫자를 rural_quota에 기입), 'merged'=다른 대상과 합산되어 농어촌 단독 인원을 알 수 없음(rural_quota는 null, track_total_quota만 기입), 'pending'=불명.",
+"3) 추정 금지: PDF에 없는 숫자는 절대 만들지 말 것. 없으면 null.",
+"4) track_total_quota: 해당 전형 전체 모집인원(모든 대상 합산).",
+"5) by_college: 농어촌 인원이 단과대학(또는 모집단위) 단위로 분해되어 있으면 [{college,quota}] 배열로. 없으면 빈 배열. 학과별로 명시돼 있지 않으면 학과 행은 넣지 말 것.",
+"6) csat_group: 정시 군이면 'ga'|'na'|'da', 수시면 null.",
+"7) has_interview / csat_minimum: 명확하면 true/false, 불명확하면 null. csat_minimum_detail에 최저기준 문구를 적는다.",
+"8) evidence.page: 인원 숫자가 나온 페이지(추정 금지, 모르면 null). evidence.confidence는 항상 'unverified'.",
+"9) 단과대학 합으로 총원을 교차검증할 수 있으면 by_college 합이 rural_quota와 같도록 한다.",
+"",
+"[JSON 스키마]",
+"{",
+'  "university_id": string,  "university": string,  "region": string,',
+'  "category": "in_seoul"|"regional_national",  "source_doc": string,  "year": number,',
+'  "tracks": [{',
+'    "track_id": string(영문 소문자+밑줄, 예 snu_susi_social),',
+'    "track_name": string,  "phase": "susi"|"jeongsi",  "csat_group": "ga"|"na"|"da"|null,',
+'    "admission_basis": string,  "rural_type": "standalone"|"included",',
+'    "rural_eligible_groups": string[],',
+'    "has_interview": boolean|null,  "interview_note": string,',
+'    "csat_minimum": boolean|null,  "csat_minimum_detail": string,',
+'    "department_cap_rule": string,',
+'    "track_total_quota": number|null,  "track_total_note": string,',
+'    "rural_quota": number|null,  "rural_quota_status": "specified"|"merged"|"pending",  "rural_quota_note": string,',
+'    "by_college": [{"college": string, "quota": number}],',
+'    "evidence": {"page": number|null, "method": string, "confidence": "unverified"}',
+'  }]',
+"}"
+].join("\n");
+
+/* ---------- render ---------- */
+const PHASE={susi:"수시",jeongsi:"정시"};
+function renderTracks(){
+  const wrap=$("tracks"); wrap.innerHTML="";
+  if(!state.tracks || !state.tracks.length){
+    wrap.innerHTML='<div class="emptyhint">아직 전형이 없습니다. <b>PDF 불러오기 → AI 추출</b>로 시작하거나, 아래에서 수동 추가하세요.</div>';
+    return;
+  }
+  state.tracks.forEach((t,i)=> wrap.appendChild(trackCard(t,i)) );
+}
+function el(html){ const d=document.createElement("div"); d.innerHTML=html.trim(); return d.firstChild; }
+
+function trackCard(t,i){
+  t.evidence = t.evidence || {confidence:"unverified",method:"",page:null};
+  t.by_college = t.by_college || [];
+  const verified = t.evidence.confidence==="verified";
+  const card = el(`<div class="track"></div>`);
+
+  /* head */
+  const head = el(`<div class="thead"></div>`);
+  const name = el(`<div class="tname"><input value="${esc(t.track_name||"")}" placeholder="전형명"/></div>`);
+  name.querySelector("input").addEventListener("input", e=> t.track_name=e.target.value );
+  head.appendChild(name);
+  const pPhase = el(`<span class="pill mono" style="background:#e9e3d6;color:#3b4660">${PHASE[t.phase]||t.phase||"?"}${t.csat_group? " · "+t.csat_group.toUpperCase()+"군":""}</span>`);
+  const pType = el(`<span class="pill ${t.rural_type||"included"}" data-pill="type">${t.rural_type||"included"}</span>`);
+  const pStat = el(`<span class="pill ${t.rural_quota_status||"pending"}" data-pill="stat">${t.rural_quota_status||"pending"}</span>`);
+  const pConf = el(`<span class="pill ${verified?"verified":"unverified"}" data-pill="conf">${verified?"검수완료":"미검수"}</span>`);
+  head.append(pPhase,pType,pStat,pConf);
+  card.appendChild(head);
+
+  /* body */
+  const body = el(`<div class="tbody"></div>`);
+  body.appendChild(cellSelect("phase","구분",t.phase,[["susi","수시"],["jeongsi","정시"]],v=>{t.phase=v;}));
+  body.appendChild(cellSelect("csat_group","정시 군",t.csat_group,[["","-"],["ga","가군"],["na","나군"],["da","다군"]],v=>{t.csat_group=v||null;}));
+  body.appendChild(cellInput("track_id","track_id",t.track_id,v=>t.track_id=v,true));
+  body.appendChild(cellInput("admission_basis","전형유형",t.admission_basis,v=>t.admission_basis=v));
+  body.appendChild(cellSelect("rural_type","농어촌 유형",t.rural_type,[["standalone","standalone 단독"],["included","included 포함"]],v=>{t.rural_type=v; repaintPill(pType,"type",v,v);}));
+  body.appendChild(cellInput("rural_eligible_groups","지원 대상(쉼표)",(t.rural_eligible_groups||[]).join(", "),v=>t.rural_eligible_groups=v.split(",").map(s=>s.trim()).filter(Boolean)));
+
+  body.appendChild(cellSelect("has_interview","면접",boolStr(t.has_interview),[["null","불명"],["true","있음"],["false","없음"]],v=>t.has_interview=parseBool(v)));
+  body.appendChild(cellSelect("csat_minimum","수능최저",boolStr(t.csat_minimum),[["null","불명"],["true","있음"],["false","없음"]],v=>t.csat_minimum=parseBool(v)));
+
+  body.appendChild(cellNum("track_total_quota","전형 전체 인원",t.track_total_quota,v=>t.track_total_quota=numOrNull(v)));
+  const rqCell = cellNum("rural_quota","농어촌 인원",t.rural_quota,v=>{t.rural_quota=numOrNull(v); refreshSum();});
+  body.appendChild(rqCell);
+  body.appendChild(cellSelect("rural_quota_status","농어촌 인원 상태",t.rural_quota_status,[["specified","specified 명시"],["merged","merged 합산·미상"],["pending","pending"]],v=>{t.rural_quota_status=v; repaintPill(pStat,"stat",v,v);}));
+
+  body.appendChild(cellArea("csat_minimum_detail","수능최저 상세",t.csat_minimum_detail,v=>t.csat_minimum_detail=v));
+  body.appendChild(cellArea("department_cap_rule","학과 인원 규칙",t.department_cap_rule,v=>t.department_cap_rule=v));
+  body.appendChild(cellArea("rural_quota_note","농어촌 인원 비고",t.rural_quota_note,v=>t.rural_quota_note=v));
+  body.appendChild(cellArea("track_total_note","전체 인원 비고",t.track_total_note,v=>t.track_total_note=v));
+
+  /* evidence */
+  const evPage = cellNum("ev_page","근거 페이지",t.evidence.page,v=>t.evidence.page=numOrNull(v));
+  body.appendChild(evPage);
+  body.appendChild(cellArea("ev_method","근거/산출 방식 (method)",t.evidence.method,v=>t.evidence.method=v,true));
+
+  /* college breakdown (Layer 2 depth) */
+  const ruled = el(`<div class="ruled"></div>`);
+  const rt = el(`<div class="rt"><span>단과대학별 농어촌 인원 (extracted · AI Pack 전용)</span><span class="sumchk" data-sum></span></div>`);
+  ruled.appendChild(rt);
+  const colWrap = el(`<div data-cols></div>`);
+  ruled.appendChild(colWrap);
+  const addCol = el(`<button class="ghost" style="font-size:11px;padding:5px 9px;margin-top:4px">＋ 단과대학 행</button>`);
+  addCol.addEventListener("click",()=>{ t.by_college.push({college:"",quota:0}); drawCols(); refreshSum(); });
+  ruled.appendChild(addCol);
+  body.appendChild(ruled);
+  card.appendChild(body);
+
+  function drawCols(){
+    colWrap.innerHTML="";
+    t.by_college.forEach((c,ci)=>{
+      const row=el(`<div class="colrow"></div>`);
+      const ci1=el(`<input value="${esc(c.college||"")}" placeholder="공과대학"/>`);
+      ci1.addEventListener("input",e=>c.college=e.target.value);
+      const ci2=el(`<input class="num" type="number" value="${c.quota??""}" />`);
+      ci2.addEventListener("input",e=>{c.quota=numOrNull(e.target.value)??0; refreshSum();});
+      const cx=el(`<button class="x">✕</button>`);
+      cx.addEventListener("click",()=>{ t.by_college.splice(ci,1); drawCols(); refreshSum(); });
+      row.append(ci1,ci2,cx); colWrap.appendChild(row);
+    });
+  }
+  function refreshSum(){
+    const sumEl = rt.querySelector("[data-sum]");
+    if(!t.by_college.length){ sumEl.textContent=""; return; }
+    const s=t.by_college.reduce((a,c)=>a+(Number(c.quota)||0),0);
+    const target = t.rural_quota;
+    if(target==null){ sumEl.textContent="합 "+s; sumEl.className="sumchk"; }
+    else if(s===target){ sumEl.textContent="합 "+s+" = 농어촌 "+target+" ✓"; sumEl.className="sumchk good"; }
+    else { sumEl.textContent="합 "+s+" ≠ 농어촌 "+target+" ✗"; sumEl.className="sumchk bad"; }
+  }
+  drawCols(); refreshSum();
+
+  /* foot */
+  const foot=el(`<div class="tfoot"></div>`);
+  const vb=el(`<label class="verifybox"><input type="checkbox" ${verified?"checked":""}/> 이 전형 검수완료 (confidence=verified)</label>`);
+  vb.querySelector("input").addEventListener("change",e=>{
+    t.evidence.confidence = e.target.checked ? "verified":"unverified";
+    repaintPill(pConf,"conf", t.evidence.confidence, e.target.checked?"검수완료":"미검수");
+  });
+  const sp=el(`<span class="spacer"></span>`);
+  const del=el(`<button class="ghost" style="border-color:var(--vermilion);color:var(--vermilion)">전형 삭제</button>`);
+  del.addEventListener("click",()=>{ state.tracks.splice(i,1); renderTracks(); });
+  foot.append(vb,sp,del);
+  card.appendChild(foot);
+  return card;
+}
+function repaintPill(node,kind,cls,label){
+  node.className="pill "+cls; node.textContent=label;
+}
+
+/* cell builders */
+function cellInput(key,label,val,on,mono){
+  const c=el(`<div class="cell"><label>${label}</label><input class="${mono?'mono':''}" value="${esc(val||"")}"/></div>`);
+  c.querySelector("input").addEventListener("input",e=>on(e.target.value)); return c;
+}
+function cellNum(key,label,val,on){
+  const c=el(`<div class="cell num"><label>${label}</label><input type="number" value="${val??""}"/></div>`);
+  c.querySelector("input").addEventListener("input",e=>on(e.target.value)); return c;
+}
+function cellArea(key,label,val,on,full){
+  const c=el(`<div class="cell ${full?'full':''}"><label>${label}</label><textarea>${esc(val||"")}</textarea></div>`);
+  c.querySelector("textarea").addEventListener("input",e=>on(e.target.value)); return c;
+}
+function cellSelect(key,label,val,opts,on){
+  const o=opts.map(([v,l])=>`<option value="${v}" ${String(val)===String(v)?"selected":""}>${l}</option>`).join("");
+  const c=el(`<div class="cell"><label>${label}</label><select>${o}</select></div>`);
+  c.querySelector("select").addEventListener("change",e=>on(e.target.value)); return c;
+}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function boolStr(b){ return b===true?"true":b===false?"false":"null"; }
+function parseBool(v){ return v==="true"?true:v==="false"?false:null; }
+function numOrNull(v){ if(v===""||v==null) return null; const n=Number(v); return isNaN(n)?null:n; }
+
+/* add manual track */
+$("addBtn").addEventListener("click",()=>{
+  state.tracks = state.tracks||[];
+  state.tracks.push({ track_id:"", track_name:"", phase:"susi", csat_group:null, admission_basis:"",
+    rural_type:"included", rural_eligible_groups:[], has_interview:null, csat_minimum:null,
+    csat_minimum_detail:"", department_cap_rule:"", track_total_quota:null, track_total_note:"",
+    rural_quota:null, rural_quota_status:"pending", rural_quota_note:"", by_college:[],
+    evidence:{page:null,method:"",confidence:"unverified"} });
+  renderTracks();
+});
+
+/* ---------- export: split into 4 layer files ---------- */
+$("exportBtn").addEventListener("click",()=>{
+  if(!state.university_id){ flash("대학 ID를 먼저 입력하세요 (파일명에 사용됩니다).","err"); return; }
+  const id=state.university_id, year=state.year||parseInt($("uyear").value||"2028",10);
+
+  const structure={ university_id:id, university:state.university, region:state.region,
+    category:state.category, source_doc:state.source_doc,
+    tracks:(state.tracks||[]).map(t=>({ track_id:t.track_id, track_name:t.track_name, phase:t.phase,
+      csat_group:t.csat_group??undefined, admission_basis:t.admission_basis, rural_type:t.rural_type,
+      rural_eligible_groups:t.rural_eligible_groups, selection_note:t.selection_note,
+      has_interview:t.has_interview, interview_note:t.interview_note||undefined,
+      csat_minimum:t.csat_minimum, csat_minimum_detail:t.csat_minimum_detail||undefined,
+      department_cap_rule:t.department_cap_rule||undefined, description:t.description||undefined })) };
+
+  const yearly={ university_id:id, year,
+    tracks:(state.tracks||[]).map(t=>({ track_id:t.track_id, track_total_quota:t.track_total_quota,
+      track_total_note:t.track_total_note||undefined, rural_quota:t.rural_quota,
+      rural_quota_status:t.rural_quota_status, rural_quota_note:t.rural_quota_note||undefined,
+      csat_group:t.csat_group??null, evidence_id:"ev_"+t.track_id })) };
+
+  const evidence={};
+  (state.tracks||[]).forEach(t=>{ evidence["ev_"+t.track_id]={ track_id:t.track_id, year,
+    value:(t.rural_quota_status==="specified"? t.rural_quota : t.track_total_quota),
+    value_meaning:(t.rural_quota_status==="specified"?"농어촌 단독 인원":"전형 전체 인원(농어촌 미상)"),
+    source_pdf:"data/raw_data/"+year+"/"+id+".pdf", page:(t.evidence&&t.evidence.page)??null,
+    method:(t.evidence&&t.evidence.method)||"", note:t.rural_quota_note||"",
+    confidence:(t.evidence&&t.evidence.confidence)||"unverified" }; });
+
+  const extracted={ university_id:id, year, source_pdf:"data/raw_data/"+year+"/"+id+".pdf",
+    extraction_method:"review-console",
+    tracks:(state.tracks||[]).filter(t=>(t.by_college||[]).length).map(t=>({
+      track_id:t.track_id, by_college:t.by_college,
+      by_college_sum:t.by_college.reduce((a,c)=>a+(Number(c.quota)||0),0) })) };
+
+  download(`structures__${id}.json`, structure);
+  setTimeout(()=>download(`yearly__${year}__${id}.json`, yearly),150);
+  setTimeout(()=>download(`evidence__${id}.json`, evidence),300);
+  setTimeout(()=>download(`extracted__${id}.json`, extracted),450);
+  const unver=(state.tracks||[]).filter(t=>!(t.evidence&&t.evidence.confidence==="verified")).length;
+  flash("4개 레이어 파일을 내려받았습니다."+(unver?` ⚠ 미검수 전형 ${unver}개 — 커밋 전 확인 권장.`:" 모두 검수완료 ✓")+
+        "<br/><span style='font-size:11.5px'>파일명의 <code>__</code>를 폴더 구분(<code>structures/${id}.json</code> 등)으로 바꿔 배치하세요.</span>", unver?"info":"ok");
+});
+function download(fname,obj){
+  const blob=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=fname;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* init */
+renderTracks();
+flash("PDF를 불러오고 <b>AI 추출</b>을 눌러 시작하세요. 추출된 값은 PDF와 대조해 보정한 뒤 내려받습니다.","info");
+</script>
+</body>
+</html>

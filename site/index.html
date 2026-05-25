@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>농어촌 대학 지원 위키 · 2028</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;600;700;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f0; --paper:#fffdf8; --ink:#1b271f; --ink-2:#46524a; --ink-3:#7c857b;
+    --pine:#1f5132; --pine-2:#2f6b46; --pine-soft:#dfe9df;
+    --clay:#b1522d; --clay-soft:#f0ddd2;
+    --gold:#a9781f; --gold-soft:#f0e4c8;
+    --line:#e6dfd0; --line-2:#d6cdb8;
+    --shadow:0 2px 4px rgba(27,39,31,.04), 0 24px 50px -28px rgba(31,81,50,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans KR",system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 85% -5%, #eef3e8 0%, transparent 55%),
+      radial-gradient(50% 40% at 0% 100%, #f3ece0 0%, transparent 55%);}
+  .disp{font-family:"Hahmlet",serif}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  a{color:inherit}
+  button{font-family:inherit;cursor:pointer}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* top */
+  .topbar{display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .brand{font-family:"Hahmlet",serif;font-weight:700;font-size:18px;letter-spacing:-.3px;cursor:pointer;display:flex;align-items:center;gap:9px}
+  .brand .seal{width:26px;height:26px;border-radius:50%;background:var(--pine);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700}
+  .topbar .sp{flex:1}
+  .topbar .yr{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);border:1px solid var(--line-2);padding:4px 9px;border-radius:999px}
+
+  /* views */
+  .view{animation:fade .45s both} @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* hero */
+  .hero{padding:74px 0 30px;text-align:center;position:relative}
+  .hero .kicker{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--pine-2);margin-bottom:18px}
+  .hero h1{font-family:"Hahmlet",serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.04;letter-spacing:-1.5px;margin:0 0 18px}
+  .hero h1 .u{background:linear-gradient(transparent 62%, var(--gold-soft) 62%);padding:0 .08em}
+  .hero p.lead{font-size:18px;color:var(--ink-2);max-width:560px;margin:0 auto 40px}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:740px;margin:0 auto;text-align:left}
+  @media(max-width:680px){.choices{grid-template-columns:1fr}}
+  .choice{background:var(--paper);border:1px solid var(--line-2);border-radius:16px;padding:26px;box-shadow:var(--shadow);
+    transition:transform .15s, box-shadow .2s;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+  .choice:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(31,81,50,.5)}
+  .choice .ic{font-size:30px}
+  .choice h3{font-family:"Hahmlet",serif;font-size:23px;margin:0;font-weight:700}
+  .choice p{margin:0;color:var(--ink-2);font-size:14.5px;min-height:42px}
+  .choice .go{margin-top:6px;font-weight:600;color:var(--pine);font-size:14px;display:flex;align-items:center;gap:6px}
+  .choice.b{background:linear-gradient(160deg,#21422f,#163524);color:#f1efe4;border-color:#163524}
+  .choice.b p{color:#cfe0cf} .choice.b .go{color:#e9c98a} .choice.b h3{color:#fff}
+  .choice .corner{position:absolute;right:-20px;top:-20px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,var(--gold-soft),transparent 70%);opacity:.6}
+  .choice.b .corner{background:radial-gradient(circle,#2f6b4633,transparent 70%)}
+
+  .trust{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:54px auto 0;color:var(--ink-3);font-size:13px;max-width:760px}
+  .trust .t{display:flex;align-items:center;gap:8px} .trust .t b{color:var(--pine)}
+
+  /* list */
+  .pagehd{padding:40px 0 8px;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .pagehd h2{font-family:"Hahmlet",serif;font-size:34px;margin:0;letter-spacing:-.6px}
+  .pagehd .crumb{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-3);cursor:pointer}
+  .pagehd .crumb:hover{color:var(--pine)}
+  .pagehd .sp{flex:1}
+  .note{font-size:13.5px;color:var(--ink-2);background:var(--pine-soft);border-left:3px solid var(--pine);padding:11px 14px;border-radius:0 8px 8px 0;margin:14px 0 26px}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;padding-bottom:70px}
+  .card{background:var(--paper);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;animation:rise .5s both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .card .ch{padding:20px 22px 14px;border-bottom:1px dashed var(--line-2);display:flex;align-items:baseline;gap:10px}
+  .card .ch .un{font-family:"Hahmlet",serif;font-size:24px;font-weight:700;letter-spacing:-.4px}
+  .card .ch .rg{font-size:12px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+  .card .cb{padding:8px 22px 6px}
+  .pathrow{padding:13px 0;border-bottom:1px solid var(--line)}
+  .pathrow:last-child{border-bottom:0}
+  .pathrow .lab{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .pathrow .ph{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:#fff;background:var(--pine-2);padding:2px 7px;border-radius:5px}
+  .pathrow .ph.j{background:var(--clay)}
+  .pathrow .tn{font-size:13.5px;color:var(--ink-2)}
+  .pathrow .num{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+  .pathrow .num b{font-family:"Hahmlet",serif;font-size:27px;font-weight:700}
+  .pathrow .num .unit{font-size:13px;color:var(--ink-3)}
+  .pathrow .num .pre{font-size:13px;color:var(--ink-2);font-weight:600}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.3px;padding:3px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+  .badge.spec{background:var(--pine-soft);color:var(--pine);border-color:#bcd3bf}
+  .badge.merg{background:var(--gold-soft);color:var(--gold);border-color:#e3cf9f}
+  .badge.stand{background:var(--clay-soft);color:var(--clay);border-color:#e6c3b2}
+  .badge.incl{background:#efe9dc;color:#6f6a58;border-color:var(--line-2)}
+  .card .cf{margin-top:auto;display:flex;gap:10px;padding:16px 22px;border-top:1px solid var(--line);background:#fcfbf5}
+  .btn{border-radius:9px;font-size:13.5px;font-weight:600;padding:9px 14px;border:1px solid var(--pine);background:var(--pine);color:#fff;transition:transform .1s,box-shadow .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px -12px var(--pine)}
+  .btn.ghost{background:transparent;color:var(--pine)} .btn.ghost:hover{background:var(--pine-soft)}
+  .btn.sp{flex:1;justify-content:center}
+
+  /* detail */
+  .detail{padding-bottom:80px}
+  .dhd{padding:36px 0 22px}
+  .dhd h2{font-family:"Hahmlet",serif;font-size:40px;margin:6px 0 0;letter-spacing:-.8px}
+  .dhd .rg{color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:13px}
+  .tk{background:var(--paper);border:1px solid var(--line-2);border-radius:18px;box-shadow:var(--shadow);margin-bottom:26px;overflow:hidden}
+  .tk .tkh{padding:22px 26px;background:linear-gradient(150deg,#f5f1e7,#efeadd);border-bottom:1px solid var(--line-2);display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+  .tk .tkh .ph{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:#fff;background:var(--pine-2);padding:3px 9px;border-radius:6px}
+  .tk .tkh .ph.j{background:var(--clay)}
+  .tk .tkh h3{font-family:"Hahmlet",serif;font-size:24px;margin:0;font-weight:700;flex:1;min-width:200px}
+  /* headline number block */
+  .headline{display:flex;align-items:flex-end;gap:18px;padding:24px 26px 8px;flex-wrap:wrap}
+  .headline .big{font-family:"Hahmlet",serif;font-weight:800;font-size:52px;line-height:1;letter-spacing:-2px;color:var(--pine)}
+  .headline.merg .big{color:var(--gold)}
+  .headline .meta{padding-bottom:6px}
+  .headline .meta .l{font-size:13px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
+  .headline .meta .l b{color:var(--ink-2)}
+  .honest{margin:6px 26px 0;padding:12px 15px;border-radius:10px;font-size:13.5px;display:flex;gap:10px;align-items:flex-start}
+  .honest.merg{background:var(--gold-soft);color:#6e5210}
+  .honest.spec{background:var(--pine-soft);color:#1f4a36}
+  .honest .i{font-weight:700;font-family:"IBM Plex Mono",monospace}
+  .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;padding:18px 26px 6px}
+  .spec{padding:12px 0;border-top:1px solid var(--line)}
+  .spec .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .spec .v{font-size:14.5px;color:var(--ink)}
+  .spec .v .yes{color:var(--pine);font-weight:600} .spec .v .no{color:var(--ink-3)}
+  .desc{padding:8px 26px 18px;color:var(--ink-2);font-size:14.5px}
+  .elem{display:flex;flex-wrap:wrap;gap:8px;padding:0 26px 18px}
+  .elem .e{font-size:13px;background:#f1ece0;border:1px solid var(--line-2);border-radius:8px;padding:6px 11px;color:var(--ink-2)}
+  .ev{display:flex;align-items:center;gap:10px;padding:13px 26px;border-top:1px solid var(--line);background:#fcfbf5;font-size:12.5px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;flex-wrap:wrap}
+  .ev .vbadge{background:var(--pine);color:#fff;padding:2px 8px;border-radius:999px;font-size:10.5px}
+  .ev .sp{flex:1}
+  .deeper{margin:0 26px 22px;border:1px dashed var(--line-2);border-radius:12px;padding:15px 18px;background:#fbfaf4;display:flex;gap:14px;align-items:center}
+  .deeper .tx{flex:1;font-size:13.5px;color:var(--ink-2)}
+  .deeper .tx b{color:var(--ink)}
+
+  /* AI view */
+  .aiv{padding:40px 0 80px;max-width:760px;margin:0 auto}
+  .aiv h2{font-family:"Hahmlet",serif;font-size:36px;margin:0 0 6px;letter-spacing:-.6px}
+  .aiv .sub{color:var(--ink-2);margin-bottom:28px}
+  .steps{display:grid;gap:12px;margin:24px 0}
+  .step{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line-2);border-radius:12px;padding:16px 18px}
+  .step .n{font-family:"Hahmlet",serif;font-weight:700;font-size:20px;color:var(--pine);min-width:30px}
+  .step .tx b{display:block;margin-bottom:2px}
+  .step .tx{font-size:14px;color:var(--ink-2)}
+  .ai-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:26px 0}
+  .ai-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .ai-tags .tg{font-family:"IBM Plex Mono",monospace;font-size:12px;border:1px solid var(--line-2);border-radius:999px;padding:5px 11px;color:var(--ink-2)}
+  .qbox{background:#163524;color:#eaf0e8;border-radius:14px;padding:22px 24px;margin-top:24px}
+  .qbox h4{font-family:"Hahmlet",serif;margin:0 0 12px;color:#fff;font-size:18px}
+  .qbox .q{font-size:14px;padding:8px 0;border-bottom:1px solid #2c4736;color:#cfe0cf}
+  .qbox .q:last-child{border-bottom:0} .qbox .q::before{content:"“";color:#e9c98a;font-weight:700;margin-right:4px}
+  .qbox .q::after{content:"”";color:#e9c98a}
+
+  footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--ink-3);font-size:12.5px;text-align:center}
+  footer b{color:var(--pine)}
+
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
+    padding:12px 18px;border-radius:10px;font-size:13.5px;opacity:0;pointer-events:none;transition:.3s;z-index:99;box-shadow:0 16px 40px -16px rgba(0,0,0,.6)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand" onclick="go('home')"><span class="seal disp">農</span> 농어촌 대학 지원 위키</div>
+    <div class="sp"></div>
+    <span class="yr mono" id="yrTag">2028학년도</span>
+  </div>
+</div>
+
+<div id="app"></div>
+
+<div class="wrap"><footer>
+  데이터는 각 대학 <b>입학전형 시행계획·모집요강 원문</b>에서 추출하고, 단과대학 합산으로 교차검증합니다.
+  확인되지 않은 숫자는 <b>추정하지 않고</b> "확인되지 않음"으로 표기합니다.
+</footer></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== data (배포 시 data/structures·yearly·evidence 에서 fetch) ===== */
+const DATA = {
+  year:2028,
+  universities:[{
+    id:"snu", name:"서울대학교", region:"서울", category:"in_seoul", pdf:"data/raw_data/2028/snu.pdf",
+    tracks:[
+      { id:"snu_susi_social", name:"기회균형특별전형(사회통합)", phase:"susi", csat_group:null, basis:"학생부종합",
+        rural_type:"included", groups:["농어촌","저소득","국가보훈","서해5도","자립지원"],
+        elements:["1단계 · 서류 100% (2배수)","2단계 · 1단계 70% + 면접 30%"],
+        interview:true, interviewNote:"있음 (2단계 30%)", csatMin:false, csatMinDetail:"미적용",
+        total:183, totalNote:"사회통합 5개 대상 합산(정원 내). 농생명계열 정원외 4명 별도.",
+        rural:null, ruralStatus:"merged",
+        unitNote:"전 모집단위 (미술·음악대학 제외)",
+        evidence:{page:5, method:"모집인원 표 ‘사회통합’ 열 합계 · 단과대학 합 검증(=183)", confidence:"verified"},
+        desc:"농어촌 자격자가 지원할 수 있는 수시 경로입니다. 사회통합 5개 대상이 하나의 전형으로 함께 선발됩니다." },
+      { id:"snu_jeongsi_rural", name:"기회균형특별전형(농어촌·저소득)", phase:"jeongsi", csat_group:"na", basis:"수능",
+        rural_type:"included", groups:["농어촌","저소득"],
+        elements:["수능 60% + 교과역량평가 40%"],
+        interview:false, interviewNote:"없음 (일반 모집단위)", csatMin:true,
+        csatMinDetail:"4개 영역(국어·수학·영어·탐구) 중 3개 영역 이상 각 3등급 이내",
+        total:180, totalNote:"농어촌 87 + 저소득 93 (정원 외)",
+        rural:87, ruralStatus:"specified",
+        unitNote:"전 모집단위 (미술·사범체육·음악대학 제외) · 학과별은 정원 10% 이내 상한",
+        evidence:{page:5, method:"모집인원 표 ‘정시 농어촌’ 열 합계 · 단과대학 합 검증(=87)", confidence:"verified"},
+        desc:"농어촌 자격자가 지원할 수 있는 정시 경로입니다. 농어촌 인원이 저소득과 별도로 책정되어 있습니다." }
+    ]
+  }]
+};
+
+/* ===== router ===== */
+const app=document.getElementById("app");
+function go(v){ window.scrollTo({top:0,behavior:"instant"}); 
+  if(v==="home")renderHome(); else if(v==="list")renderList();
+  else if(v.startsWith("detail:"))renderDetail(v.split(":")[1]); else if(v==="ai")renderAI();
+}
+const PHASE={susi:"수시",jeongsi:"정시"};
+function uniById(id){return DATA.universities.find(u=>u.id===id);}
+
+/* number/badge helper per track */
+function trackNum(t){
+  if(t.ruralStatus==="specified") return {pre:"농어촌", n:t.rural, badge:'<span class="badge spec">농어촌 별도 명시</span>'};
+  if(t.ruralStatus==="merged") return {pre:"", n:t.total, badge:'<span class="badge merg">전체 · 농어촌 미상</span>'};
+  return {pre:"", n:t.total, badge:'<span class="badge incl">확인되지 않음</span>'};
+}
+
+/* ===== home ===== */
+function renderHome(){
+  app.innerHTML=`
+  <div class="view"><div class="wrap">
+    <section class="hero">
+      <div class="kicker">2028학년도 · 농어촌 자격자</div>
+      <h1 class="disp">지원할 수 있는 길을<br/><span class="u">한눈에</span> 찾으세요.</h1>
+      <p class="lead">수십 페이지 PDF에 흩어진 농어촌 지원 경로를, 대학별로 정리했습니다. 모집인원·면접·수능최저를 한 화면에서.</p>
+      <div class="choices">
+        <div class="choice" onclick="go('list')">
+          <div class="corner"></div>
+          <div class="ic">📖</div>
+          <h3 class="disp">그냥 보기</h3>
+          <p>설치 없이 바로. 대학별 모집인원, 수시·정시, 면접·수능최저, 원문 PDF까지.</p>
+          <div class="go">대학 목록 보기 →</div>
+        </div>
+        <div class="choice b" onclick="go('ai')">
+          <div class="corner"></div>
+          <div class="ic">🤖</div>
+          <h3 class="disp">AI와 함께 보기</h3>
+          <p>자료를 AI에 올리고 내 상황으로 질문. “면접 없는 대학만”, “내 점수로 가능한 곳”.</p>
+          <div class="go">AI Pack 알아보기 →</div>
+        </div>
+      </div>
+      <div class="trust">
+        <div class="t"><b>✓</b> 원문 PDF 기반 추출</div>
+        <div class="t"><b>✓</b> 단과대학 합산 교차검증</div>
+        <div class="t"><b>✓</b> 추정 없이 “확인되지 않음” 표기</div>
+      </div>
+    </section>
+  </div></div>`;
+}
+
+/* ===== list ===== */
+function renderList(){
+  const cards=DATA.universities.map((u,idx)=>{
+    const byPhase={susi:[],jeongsi:[]}; u.tracks.forEach(t=>byPhase[t.phase].push(t));
+    const rows=["susi","jeongsi"].map(ph=>{
+      const ts=byPhase[ph]; if(!ts.length) return "";
+      return ts.map(t=>{
+        const info=trackNum(t);
+        return `<div class="pathrow">
+          <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span><span class="tn">${t.name}</span></div>
+          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span> ${info.badge}</div>
+        </div>`;
+      }).join("");
+    }).join("");
+    return `<div class="card" style="animation-delay:${idx*70}ms">
+      <div class="ch"><span class="un disp">${u.name}</span><span class="rg mono">${u.region}</span></div>
+      <div class="cb">${rows}</div>
+      <div class="cf">
+        <button class="btn ghost" onclick="pdf('${u.id}')">PDF 원문</button>
+        <button class="btn sp" onclick="go('detail:${u.id}')">자세히 →</button>
+      </div>
+    </div>`;
+  }).join("");
+  app.innerHTML=`<div class="view"><div class="wrap">
+    <div class="pagehd"><span class="crumb mono" onclick="go('home')">← 처음</span><div class="sp"></div></div>
+    <div class="pagehd"><h2 class="disp">대학 목록</h2></div>
+    <div class="note">숫자 옆 표시를 꼭 보세요 — <b>‘농어촌 별도 명시’</b>는 농어촌 몫이고, <b>‘전체 · 농어촌 미상’</b>은 여러 대상을 합친 전형 전체 인원이라 농어촌이 몇 명인지는 자료에 없다는 뜻입니다.</div>
+    <div class="cards">${cards}</div>
+  </div></div>`;
+}
+
+/* ===== detail ===== */
+function renderDetail(id){
+  const u=uniById(id);
+  const tracks=u.tracks.map(t=>{
+    const info=trackNum(t);
+    const honest = t.ruralStatus==="merged"
+      ? `<div class="honest merg"><span class="i">!</span><div><b>${t.total}명은 ‘${t.name}’ 전체 인원</b>입니다(${t.groups.join("·")} 합산). 이 중 농어촌이 몇 명인지는 모집요강에 따로 나와 있지 않습니다.</div></div>`
+      : `<div class="honest spec"><span class="i">✓</span><div>농어촌 인원 <b>${t.rural}명</b>이 저소득 등과 <b>별도로 명시</b>되어 있어, 농어촌 몫을 정확히 알 수 있습니다.</div></div>`;
+    return `<div class="tk">
+      <div class="tkh"><span class="ph ${t.phase==='jeongsi'?'j':''}">${PHASE[t.phase]}</span><h3 class="disp">${t.name}</h3>
+        ${t.rural_type==="standalone"?'<span class="badge stand">농어촌 단독</span>':'<span class="badge incl">농어촌 포함</span>'}
+        ${info.badge}
+      </div>
+      <div class="headline ${t.ruralStatus}">
+        <div class="big disp">${info.n}<span style="font-size:22px;letter-spacing:0"> 명</span></div>
+        <div class="meta"><div class="l">${info.pre?info.pre+" 모집인원":"전형 전체 모집인원"}</div>
+          <div class="l">${t.totalNote?("<b>참고</b> "+t.totalNote):""}</div></div>
+      </div>
+      ${honest}
+      <div class="specs">
+        <div class="spec"><div class="k">전형유형</div><div class="v">${t.basis}</div></div>
+        <div class="spec"><div class="k">면접</div><div class="v">${t.interview?'<span class="yes">있음</span>':'<span class="no">없음</span>'} · ${t.interviewNote}</div></div>
+        <div class="spec"><div class="k">수능최저</div><div class="v">${t.csatMin?'<span class="yes">적용</span>':'<span class="no">미적용</span>'}</div></div>
+        <div class="spec"><div class="k">모집단위</div><div class="v">${t.unitNote}</div></div>
+      </div>
+      ${t.csatMin?`<div class="desc"><b>수능최저 기준</b> · ${t.csatMinDetail}</div>`:""}
+      <div class="elem">${t.elements.map(e=>`<span class="e">${e}</span>`).join("")}</div>
+      <div class="desc">${t.desc}</div>
+      <div class="deeper"><div class="tx"><b>단과대학·학과별 인원이 궁금하세요?</b> 웹 화면은 전형 단위까지만 보여줍니다. 단과대학별 분해와 “우리 학과는?” 같은 질문은 <b>AI와 함께 보기</b>에서.</div>
+        <button class="btn" onclick="go('ai')">🤖 AI로 묻기</button></div>
+      <div class="ev mono"><span>출처 · 2028 시행계획 ${t.evidence.page}쪽</span><span>·</span><span>${t.evidence.method}</span><span class="sp"></span>
+        ${t.evidence.confidence==="verified"?'<span class="vbadge">검증됨</span>':'<span>미검수</span>'}</div>
+    </div>`;
+  }).join("");
+  app.innerHTML=`<div class="view"><div class="wrap detail">
+    <div class="pagehd"><span class="crumb mono" onclick="go('list')">← 대학 목록</span></div>
+    <div class="dhd"><div class="rg mono">${u.region} · ${u.category}</div><h2 class="disp">${u.name}</h2></div>
+    ${tracks}
+    <div style="display:flex;gap:12px"><button class="btn ghost" onclick="pdf('${u.id}')">PDF 원문 열기</button></div>
+  </div></div>`;
+}
+
+/* ===== AI view ===== */
+function renderAI(){
+  app.innerHTML=`<div class="view"><div class="wrap"><div class="aiv">
+    <span class="crumb mono" style="cursor:pointer;color:var(--ink-3)" onclick="go('home')">← 처음</span>
+    <h2 class="disp" style="margin-top:14px">AI와 함께 보기</h2>
+    <p class="sub">자료를 그냥 읽는 데서 끝나지 않습니다. AI Pack을 내려받아 챗봇에 올리면, <b>내 상황으로 직접 질문</b>할 수 있어요.</p>
+    <div class="steps">
+      <div class="step"><span class="n disp">1</span><div class="tx"><b>AI Pack 내려받기</b>대학 데이터(JSON)와 원문 표, 질문 가이드가 들어 있습니다.</div></div>
+      <div class="step"><span class="n disp">2</span><div class="tx"><b>유료 AI 열기</b>ChatGPT·Claude·Gemini (파일 업로드가 되는 유료 플랜)</div></div>
+      <div class="step"><span class="n disp">3</span><div class="tx"><b>파일 업로드 후 질문</b>“면접 없는 대학만”, “수능최저 없는 수시”처럼 자유롭게.</div></div>
+    </div>
+    <div class="ai-cta">
+      <button class="btn" onclick="toast('AI Pack은 배포 환경에서 ZIP으로 제공됩니다.')">⤓ AI Pack 다운로드</button>
+      <div class="ai-tags"><span class="tg">ChatGPT</span><span class="tg">Claude</span><span class="tg">Gemini</span></div>
+    </div>
+    <div class="qbox">
+      <h4>이렇게 물어보세요</h4>
+      <div class="q">나는 농어촌이고 컴퓨터공학에 관심 있어. 지원 가능한 정시 경로 알려줘</div>
+      <div class="q">면접 없는 대학만 추려줘</div>
+      <div class="q">수능최저 없는 수시는 어디야?</div>
+      <div class="q">서울대 공과대학 정시 농어촌은 몇 명이야?</div>
+    </div>
+    <div class="note" style="margin-top:22px">AI Pack에는 <b>“추정 금지”</b> 규칙이 들어 있습니다. 자료에 없는 숫자는 AI가 지어내지 않고 “확인되지 않음”이라고 답하도록 안내합니다.</div>
+  </div></div></div>`;
+}
+
+function pdf(id){ toast("원문 PDF는 배포 환경에서 "+uniById(id).pdf+" 로 연결됩니다."); }
+let tmr; function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(tmr); tmr=setTimeout(()=>t.classList.remove("show"),3200); }
+
+document.getElementById("yrTag").textContent=DATA.year+"학년도";
+renderHome();
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Structure Layer (Layer 3) — 잘 안 바뀌는 전형 구조",
+  "type": "object",
+  "required": ["university_id", "university", "tracks"],
+  "properties": {
+    "university_id": { "type": "string" },
+    "university": { "type": "string" },
+    "region": { "type": "string" },
+    "category": { "enum": ["in_seoul", "regional_national"] },
+    "source_doc_type": { "type": "string" },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["track_id", "track_name", "phase", "rural_type", "has_interview"],
+        "properties": {
+          "track_id": { "type": "string", "description": "Layer 3·4·5를 잇는 고유 키" },
+          "track_name": { "type": "string" },
+          "phase": { "enum": ["susi", "jeongsi"] },
+          "admission_basis": { "type": "string" },
+          "rural_type": {
+            "enum": ["standalone", "included"],
+            "description": "standalone=농어촌 단독 선발, included=기회균형 등에 농어촌 포함"
+          },
+          "rural_eligible_groups": { "type": "array", "items": { "type": "string" } },
+          "selection_elements": { "type": "array", "items": { "type": "string" } },
+          "has_interview": { "type": "boolean" },
+          "csat_minimum": { "type": ["boolean", "null"], "description": "true=수능최저 있음, false=없음, null=미확인" },
+          "csat_minimum_note": { "type": "string" },
+          "department_cap_rule": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

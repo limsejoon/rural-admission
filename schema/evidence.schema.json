@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evidence Layer (Layer 5) — 숫자의 근거 + 검수 상태",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["track_id", "year", "value", "source_pdf", "confidence"],
+    "properties": {
+      "track_id": { "type": "string" },
+      "year": { "type": "integer" },
+      "value": { "type": ["integer", "null"], "description": "Layer 4 숫자와 일치해야 함" },
+      "source_pdf": { "type": "string", "description": "근거 PDF 경로" },
+      "page": { "type": ["integer", "null"], "description": "근거 페이지 번호" },
+      "method": { "type": "string", "description": "숫자를 어떻게 얻었는지 (직접 명시/합산/계산규칙 등)" },
+      "note": { "type": "string" },
+      "confidence": {
+        "enum": ["verified", "unverified", "pending"],
+        "description": "verified=사람이 검수 콘솔에서 확인, unverified=AI 추출 미검수, pending=추출 전"
+      }
+    }
+  }
+}

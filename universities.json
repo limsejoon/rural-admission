@@ -1,0 +1,18 @@
+{
+  "active_year": 2028,
+  "available_years": [2028],
+  "categories": {
+    "in_seoul": "인서울 (약 25개교)",
+    "regional_national": "지방 거점/국립대 (약 10개교)"
+  },
+  "universities": [
+    {
+      "university_id": "snu",
+      "university": "서울대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 시행계획 (2026.4.)"
+    }
+  ]
+}

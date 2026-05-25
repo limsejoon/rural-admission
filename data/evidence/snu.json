@@ -1,0 +1,26 @@
+{
+  "ev_snu_susi_social": {
+    "track_id": "snu_susi_social",
+    "year": 2028,
+    "value": 183,
+    "value_meaning": "사회통합 전형 전체(정원 내). 농어촌 단독 아님.",
+    "source_pdf": "data/raw_data/2028/snu.pdf",
+    "page": 5,
+    "page_range": "3-5",
+    "method": "모집단위와 모집인원 표 '기회균형특별전형(사회통합)' 열의 합계 행에서 추출. 단과대학별 17개 값 합산 검증 완료(=183).",
+    "note": "면접 있음·수능최저 미적용은 14~16쪽 확인. 농생명계열 4명은 정원 외 별도(각주 8번).",
+    "confidence": "verified"
+  },
+  "ev_snu_jeongsi_rural": {
+    "track_id": "snu_jeongsi_rural",
+    "year": 2028,
+    "value": 87,
+    "value_meaning": "정시 농어촌 단독 인원(정원 외). 저소득 93명과 별도.",
+    "source_pdf": "data/raw_data/2028/snu.pdf",
+    "page": 5,
+    "page_range": "3-5",
+    "method": "모집인원 표 '정원 외 → 정시 기회균형 → 농어촌' 열 합계에서 추출. 단과대학별 17개 값 합산 검증 완료(=87).",
+    "note": "수능최저(3개 영역 3등급)·전형방법(수능60+교과40)은 24~27쪽 확인. 학과별 인원은 정원 10% 상한 규칙만 있고 미명시.",
+    "confidence": "verified"
+  }
+}
