@@ -13,6 +13,46 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 시행계획 (2026.4.)"
+    },
+    {
+      "university_id": "yonsei",
+      "university": "연세대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 시행계획 (2026.4.)"
+    },
+    {
+      "university_id": "korea",
+      "university": "고려대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 시행계획 (2026.4.)"
+    },
+    {
+      "university_id": "sogang",
+      "university": "서강대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 시행계획 (2026.4.30.)"
+    },
+    {
+      "university_id": "skku",
+      "university": "성균관대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 시행계획 (2026.4.)"
+    },
+    {
+      "university_id": "hanyang",
+      "university": "한양대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 신입학 전형계획 (2026.4.30.)"
     }
   ]
 }

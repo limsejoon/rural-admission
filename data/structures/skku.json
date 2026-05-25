@@ -1,0 +1,44 @@
+{
+  "university_id": "skku",
+  "university": "성균관대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "skku_susi_gihoe",
+      "track_name": "학생부종합(기회균형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": [
+        "국가보훈대상자",
+        "농어촌학생",
+        "특성화고졸업(예정)자",
+        "이웃사랑(수급자·차상위·한부모)",
+        "장애인등대상자",
+        "자립지원대상자"
+      ],
+      "selection_elements": ["서류(학생부) 100% (일괄합산)"],
+      "has_interview": false,
+      "interview_note": "없음 (서류 일괄합산, 단계 없음)",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "전 모집단위 (세부 모집단위는 수시 모집요강 확인 요)",
+      "description": "6개 대상 통합 전형. 정원 내 선발. 농어촌은 포함 대상 중 하나."
+    },
+    {
+      "track_id": "skku_jeongsi_rural",
+      "track_name": "수능(농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 100% (일괄합산)"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "가군 34명(사회과학·자연과학·약학 등), 나군 68명(인문·경영·공학·전전공·바이오 등), 다군 8명(반도체·에너지·양자정보). 모집단위별 정원의 10% 이내 선발.",
+      "description": "정시 가/나/다군 전 걸쳐 선발. 모집단위별 군 배치가 다름."
+    }
+  ]
+}

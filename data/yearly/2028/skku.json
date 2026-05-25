@@ -1,0 +1,26 @@
+{
+  "university_id": "skku",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "skku_susi_gihoe",
+      "track_total_quota": 29,
+      "track_total_note": "기회균형 6개 대상 합산. 정원 내 선발.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "농어촌 단독 인원 명시 없음. 6개 대상 합산. 타 대학과 달리 정원 내 선발.",
+      "csat_group": null,
+      "evidence_id": "ev_skku_susi_gihoe"
+    },
+    {
+      "track_id": "skku_jeongsi_rural",
+      "track_total_quota": 110,
+      "track_total_note": "농어촌 단독 전형 전체. 정원 외. 가군 34 + 나군 68 + 다군 8 = 110.",
+      "rural_quota": 110,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌 단독 전형. 110명 전원이 농어촌 몫.",
+      "csat_group": "ga_na_da",
+      "evidence_id": "ev_skku_jeongsi_rural"
+    }
+  ]
+}

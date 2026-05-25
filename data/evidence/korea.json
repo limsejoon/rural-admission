@@ -1,0 +1,26 @@
+{
+  "ev_korea_susi_goreun": {
+    "track_id": "korea_susi_goreun",
+    "year": 2028,
+    "value": 200,
+    "value_meaning": "고른기회전형 전체(4개 대상 합산). 농어촌 단독 아님.",
+    "source_pdf": "data/raw_data/2028/korea.pdf",
+    "page": 15,
+    "page_range": "14-15",
+    "method": "수시 고른기회전형 상세(14쪽) '모집인원: 200명' 확인. 전형방법·수능최저 미적용은 15쪽 확인.",
+    "note": "면접 있음(2단계 20%, 제시문 기반)·수능최저 미적용. 농어촌은 4개 대상 중 하나로 포함.",
+    "confidence": "verified"
+  },
+  "ev_korea_jeongsi_rural": {
+    "track_id": "korea_jeongsi_rural",
+    "year": 2028,
+    "value": 120,
+    "value_meaning": "정시 농어촌전형 전용 인원(정원 외). 농어촌 단독 전형.",
+    "source_pdf": "data/raw_data/2028/korea.pdf",
+    "page": 28,
+    "page_range": "27-30",
+    "method": "정시모집 모집인원 표(6-7쪽) 및 전형 상세(27쪽) '농어촌전형 120명' 확인. 계열별 합산(인문57+자연56+의학3+체능2+예능2=120) 교차검증 완료.",
+    "note": "전형요소: 수능100%(인문·자연·의학), 수능70%+실기30%(체육·디자인). 수능: 국어·수학·탐구 백분위 반영.",
+    "confidence": "verified"
+  }
+}

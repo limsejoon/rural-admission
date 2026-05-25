@@ -1,0 +1,44 @@
+{
+  "university_id": "hanyang",
+  "university": "한양대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "hanyang_susi_goreun",
+      "track_name": "학생부종합(고른기회)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": [
+        "기초생활수급자·차상위계층·한부모가족",
+        "국가보훈대상자",
+        "농어촌학생",
+        "특성화고교졸업자",
+        "특수교육대상자",
+        "자립지원대상자"
+      ],
+      "selection_elements": ["학생부종합평가 100%"],
+      "has_interview": false,
+      "interview_note": "없음 (수능 면제, 면접 없음)",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "전 모집단위 (일부 제외 가능 — 수시 모집요강 확인 요). 지원자격 구분별 별도 선발인원 배정 없음.",
+      "description": "6개 대상 통합 전형. 정원 내 선발. 농어촌은 포함 대상 중 하나."
+    },
+    {
+      "track_id": "hanyang_jeongsi_rural",
+      "track_name": "수능(가/나군 농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "가군 49명(자연30·인문11·상경8), 나군 28명(자연16·인문4·상경8). 모집단위별 입학정원의 최대 5% 이내 선발. 계열 단위 선발.",
+      "description": "정시 가/나군 농어촌 단독 전형. 계열별(자연·인문·상경) 선발."
+    }
+  ]
+}

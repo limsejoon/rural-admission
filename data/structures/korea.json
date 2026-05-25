@@ -1,0 +1,44 @@
+{
+  "university_id": "korea",
+  "university": "고려대학교",
+  "region": "서울",
+  "category": "in_seoul",
+  "source_doc": "2028학년도 고려대학교(서울) 입학전형시행계획 (2026.04.)",
+  "tracks": [
+    {
+      "track_id": "korea_susi_goreun",
+      "track_name": "학생부종합(고른기회전형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": ["농어촌", "국가보훈대상자", "사회배려자", "자립지원대상자"],
+      "rural_note": "농어촌 자격: 유형 가(중·고 전 교육과정 + 본인·부·모 거주) 또는 나(초·중·고 전 교육과정 + 본인 거주). 과학고·외고·국제고·예고·체고·특성화고/마이스터고·영재학교 출신자 지원 불가.",
+      "selection_elements": ["1단계: 서류 100% (3배수)", "2단계: 1단계 80% + 면접 20%"],
+      "selection_note": "제시문 기반 면접. 고른기회·다문화·재직자전형 간 복수지원 불가.",
+      "has_interview": true,
+      "interview_note": "있음 (2단계 20%, 제시문 기반)",
+      "unit_note": "전 모집단위",
+      "csat_minimum": false,
+      "csat_minimum_note": "미적용",
+      "description": "농어촌 자격자가 지원 가능한 수시 경로. 국가보훈대상자·사회배려자·자립지원대상자와 함께 하나의 전형으로 선발되며, 농어촌 단독 인원은 별도 명시되지 않음."
+    },
+    {
+      "track_id": "korea_jeongsi_rural",
+      "track_name": "수능(농어촌전형)",
+      "phase": "jeongsi",
+      "csat_group": "ga",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌"],
+      "rural_note": "농어촌 자격: 유형 가(중·고 전 교육과정 + 본인·부·모 거주) 또는 나(초·중·고 전 교육과정 + 본인 거주). 과학고·외고·국제고·예고·체고·특성화고/마이스터고·영재학교 출신자 지원 불가.",
+      "selection_elements": ["수능 100% (일괄합산, 인문·자연·의학)", "수능 70% + 실기 30% (체육교육과·디자인조형학부)"],
+      "selection_note": "수능: 국어·수학·탐구 백분위, 영어·한국사 등급별 감점. 의학과는 적성·인성 면접 추가(별도 배점 없음).",
+      "has_interview": false,
+      "interview_note": "없음 (의학과 제외). 의학과는 적성·인성 면접(배점 없이 결격 판단용).",
+      "unit_note": "모집단위별 입학정원의 4% 이내 선발. 체육교육과·디자인조형학부는 실기 30% 포함.",
+      "csat_minimum": false,
+      "csat_minimum_note": "별도 수능최저 없음 (수능이 주요 전형요소로 활용됨)",
+      "description": "농어촌 자격자 전용 독립 정시 전형. 농어촌만 선발하는 단독 전형으로, 120명 전원이 농어촌 몫. 정원 외. 가군."
+    }
+  ]
+}

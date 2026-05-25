@@ -1,0 +1,26 @@
+{
+  "ev_sogang_susi_gihoe": {
+    "track_id": "sogang_susi_gihoe",
+    "year": 2028,
+    "value": 85,
+    "value_meaning": "기회균형전형 전체(6개 대상 합산). 농어촌 단독 아님.",
+    "source_pdf": "data/raw_data/2028/sogang.pdf",
+    "page": 5,
+    "page_range": "5, 8, 12",
+    "method": "모집인원 표(5쪽) '기회균형: 85명' 확인. 전형요소(8쪽) 서류100% 일괄합산, 면접 없음 확인. 지원자격(12쪽) 6개 대상 확인.",
+    "note": "면접 없음(서류 일괄합산)·수능최저 미적용. 농어촌은 6개 대상 중 하나로 포함.",
+    "confidence": "verified"
+  },
+  "ev_sogang_jeongsi_rural": {
+    "track_id": "sogang_jeongsi_rural",
+    "year": 2028,
+    "value": 48,
+    "value_meaning": "정시 농어촌학생전형 전용 인원(정원 외). 농어촌 단독 전형. 나군.",
+    "source_pdf": "data/raw_data/2028/sogang.pdf",
+    "page": 6,
+    "page_range": "6, 20",
+    "method": "정시모집 총계(6쪽) '농어촌학생: 48명' 확인. 전형 상세(20쪽) 48명 교차검증 완료. 수능최저(3개 영역 등급합 9 이내) 및 나군 배치 확인.",
+    "note": "수능최저 적용(국·수·영·탐 4개 중 3개 등급합 9 이내, 한국사 4등급 이내). 나군. 수능100%.",
+    "confidence": "verified"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "university_id": "yonsei",
+  "university": "연세대학교",
+  "region": "서울",
+  "category": "in_seoul",
+  "source_doc": "2028학년도 연세대학교 서울캠퍼스 입학전형 시행계획 (2026.4.)",
+  "tracks": [
+    {
+      "track_id": "yonsei_susi_gihoe",
+      "track_name": "학생부종합(기회균형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": ["농어촌", "국가보훈대상자", "기초생활수급자·차상위계층", "한부모가족"],
+      "rural_note": "농어촌 자격: 유형 가(중·고 전 교육과정 농어촌 이수 + 본인·부·모 거주) 또는 나(초·중·고 전 교육과정 + 본인 거주). 영재학교·과학고·외고·국제고·예고·체고·특성화고/마이스터고 재학 사실 있으면 지원 불가.",
+      "selection_elements": ["1단계: 서류 100% (3배수)", "2단계: 서류 60% + 면접 40%"],
+      "selection_note": "제시문 기반 면접",
+      "has_interview": true,
+      "interview_note": "있음 (2단계 40%, 제시문 기반)",
+      "unit_note": "전 모집단위",
+      "csat_minimum": false,
+      "csat_minimum_note": "미적용",
+      "description": "농어촌 자격자가 지원 가능한 수시 경로. 국가보훈대상자·기초생활수급자·차상위계층·한부모가족과 함께 하나의 전형으로 선발되며, 농어촌 단독 인원은 별도 명시되지 않음."
+    },
+    {
+      "track_id": "yonsei_jeongsi_rural",
+      "track_name": "수능(고른기회전형·농어촌학생)",
+      "phase": "jeongsi",
+      "csat_group": "ga",
+      "admission_basis": "수능",
+      "rural_type": "included",
+      "rural_eligible_groups": ["농어촌"],
+      "rural_note": "농어촌 자격: 유형 가(중·고 전 교육과정 농어촌 이수 + 본인·부·모 거주) 또는 나(초·중·고 전 교육과정 + 본인 거주). 영재학교·과학고·외고·국제고·예고·체고·특성화고/마이스터고 재학 사실 있으면 지원 불가.",
+      "selection_elements": ["수능 900점 + 서류평가 100점 (일괄합산)", "의예과: 수능 850점 + 서류 100점 + 면접 50점 (단계별, 3배수)"],
+      "selection_note": "서류평가는 교과학습발달상황·출결 등 정성평가. 의예과는 제시문 기반 면접.",
+      "has_interview": false,
+      "interview_note": "없음 (의예과 제외). 의예과는 3배수 단계별 + 제시문 기반 면접.",
+      "unit_note": "인문(유형Ⅰ)·자연(유형Ⅱ)·통합·체능(유형Ⅲ)은 '가'군. 음악대학 예능계열(유형Ⅳ)은 '나'군 별도 선발.",
+      "csat_minimum": false,
+      "csat_minimum_note": "별도 수능최저 없음 (수능이 주요 전형요소로 활용됨)",
+      "description": "농어촌 자격자 전용 정시 경로(고른기회전형 내 농어촌 별도 할당). '가'군 87명 + '나'군 예능 2명 = 총 89명. 정원 외."
+    }
+  ]
+}

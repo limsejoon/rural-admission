@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp *)",
+      "Bash(kill *)",
+      "Bash(node /tmp/snap*)",
+      "Bash(node /tmp/debug*)",
+      "Bash(lsof -ti:*)"
+    ]
+  }
+}

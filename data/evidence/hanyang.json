@@ -1,0 +1,26 @@
+{
+  "ev_hanyang_susi_goreun": {
+    "track_id": "hanyang_susi_goreun",
+    "year": 2028,
+    "value": 107,
+    "value_meaning": "고른기회전형 전체(6개 대상 합산). 농어촌 단독 아님. 정원 내.",
+    "source_pdf": "data/raw_data/2028/hanyang.pdf",
+    "page": 13,
+    "page_range": "2-3, 13-14",
+    "method": "정원 내 모집인원 총괄표(2-3쪽) 고른기회 합계 107명 확인. 전형 상세(13-14쪽) 학생부종합평가100%·면접없음·수능최저없음·6개 대상·지원자격 구분별 배정 없음 확인.",
+    "note": "면접 없음·수능최저 미적용. 정원 내 선발(타 대학 기회균형과 달리 정원 외 아님). 농어촌은 6개 대상 중 하나.",
+    "confidence": "verified"
+  },
+  "ev_hanyang_jeongsi_rural": {
+    "track_id": "hanyang_jeongsi_rural",
+    "year": 2028,
+    "value": 77,
+    "value_meaning": "정시 농어촌학생 전용 인원(정원 외). 농어촌 단독 전형. 가군+나군.",
+    "source_pdf": "data/raw_data/2028/hanyang.pdf",
+    "page": 4,
+    "page_range": "4, 28, 30",
+    "method": "정원외 모집인원 총괄표(4쪽) 농어촌학생 가군49+나군28=77 확인. 계열별 검증: 가군(자30+인11+상8=49), 나군(자16+인4+상8=28). 전형 상세(28쪽) 수능100%·수능최저없음·정원외 확인(30쪽).",
+    "note": "수능최저 없음. 가군 49명(계열별: 자연30·인문11·상경8) + 나군 28명(자연16·인문4·상경8) = 77명. 모집단위별 정원의 최대 5% 이내.",
+    "confidence": "verified"
+  }
+}

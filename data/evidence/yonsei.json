@@ -1,0 +1,26 @@
+{
+  "ev_yonsei_susi_gihoe": {
+    "track_id": "yonsei_susi_gihoe",
+    "year": 2028,
+    "value": 225,
+    "value_meaning": "기회균형 전형 전체(5개 대상 합산). 농어촌 단독 아님.",
+    "source_pdf": "data/raw_data/2028/yonsei.pdf",
+    "page": 9,
+    "page_range": "9, 19",
+    "method": "수시 전형별 모집인원 표(9쪽) '기회균형 220명(5명)' 확인. 전형 상세(19쪽) '모집인원 225명' 일치 검증.",
+    "note": "면접 있음(2단계 40%, 제시문 기반)·수능최저 미적용은 19쪽 확인. 농어촌은 5개 대상 중 하나로 포함.",
+    "confidence": "verified"
+  },
+  "ev_yonsei_jeongsi_rural": {
+    "track_id": "yonsei_jeongsi_rural",
+    "year": 2028,
+    "value": 89,
+    "value_meaning": "정시 고른기회 농어촌학생 전용 인원(정원 외). '가'군 87명 + '나'군(음악대학 예능) 2명.",
+    "source_pdf": "data/raw_data/2028/yonsei.pdf",
+    "page": 9,
+    "page_range": "9, 27",
+    "method": "정시 모집인원 표(9쪽) '농어촌학생 87명'+'나군 예능 2명' 확인. 계열별 세부 표(27쪽) 합산(인문36+자연37+의1+치1+약2+상경5+생활·간호3+체능2+예능2=89) 교차검증 완료.",
+    "note": "전형요소: 수능900+서류100(일괄합산). 의예과는 3배수 단계별+면접50점. 서류평가는 교과·출결 정성평가.",
+    "confidence": "verified"
+  }
+}

@@ -156,6 +156,9 @@
 
   footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--ink-3);font-size:12.5px;text-align:center}
   footer b{color:var(--pine)}
+  .loading{text-align:center;padding:100px 0;color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:13px}
+  .err{background:var(--clay-soft);border:1px solid var(--clay);border-radius:12px;padding:20px 24px;margin:40px 0;color:var(--clay);font-size:14px;line-height:1.7}
+  .err code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:#0001;padding:2px 6px;border-radius:4px}
 
   .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;
     padding:12px 18px;border-radius:10px;font-size:13.5px;opacity:0;pointer-events:none;transition:.3s;z-index:99;box-shadow:0 16px 40px -16px rgba(0,0,0,.6)}
@@ -181,34 +184,74 @@
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== data (배포 시 data/structures·yearly·evidence 에서 fetch) ===== */
-const DATA = {
-  year:2028,
-  universities:[{
-    id:"snu", name:"서울대학교", region:"서울", category:"in_seoul", pdf:"data/raw_data/2028/snu.pdf",
-    tracks:[
-      { id:"snu_susi_social", name:"기회균형특별전형(사회통합)", phase:"susi", csat_group:null, basis:"학생부종합",
-        rural_type:"included", groups:["농어촌","저소득","국가보훈","서해5도","자립지원"],
-        elements:["1단계 · 서류 100% (2배수)","2단계 · 1단계 70% + 면접 30%"],
-        interview:true, interviewNote:"있음 (2단계 30%)", csatMin:false, csatMinDetail:"미적용",
-        total:183, totalNote:"사회통합 5개 대상 합산(정원 내). 농생명계열 정원외 4명 별도.",
-        rural:null, ruralStatus:"merged",
-        unitNote:"전 모집단위 (미술·음악대학 제외)",
-        evidence:{page:5, method:"모집인원 표 ‘사회통합’ 열 합계 · 단과대학 합 검증(=183)", confidence:"verified"},
-        desc:"농어촌 자격자가 지원할 수 있는 수시 경로입니다. 사회통합 5개 대상이 하나의 전형으로 함께 선발됩니다." },
-      { id:"snu_jeongsi_rural", name:"기회균형특별전형(농어촌·저소득)", phase:"jeongsi", csat_group:"na", basis:"수능",
-        rural_type:"included", groups:["농어촌","저소득"],
-        elements:["수능 60% + 교과역량평가 40%"],
-        interview:false, interviewNote:"없음 (일반 모집단위)", csatMin:true,
-        csatMinDetail:"4개 영역(국어·수학·영어·탐구) 중 3개 영역 이상 각 3등급 이내",
-        total:180, totalNote:"농어촌 87 + 저소득 93 (정원 외)",
-        rural:87, ruralStatus:"specified",
-        unitNote:"전 모집단위 (미술·사범체육·음악대학 제외) · 학과별은 정원 10% 이내 상한",
-        evidence:{page:5, method:"모집인원 표 ‘정시 농어촌’ 열 합계 · 단과대학 합 검증(=87)", confidence:"verified"},
-        desc:"농어촌 자격자가 지원할 수 있는 정시 경로입니다. 농어촌 인원이 저소득과 별도로 책정되어 있습니다." }
-    ]
-  }]
-};
+/* ===== data layer ===== */
+let DATA = { year: 2028, universities: [] };
+
+function mergeUniversity(meta, structure, yearly, evidence) {
+  const tracks = structure.tracks.map(st => {
+    const yr = yearly.tracks.find(y => y.track_id === st.track_id) || {};
+    const ev = evidence[yr.evidence_id] || {};
+    return {
+      id: st.track_id,
+      name: st.track_name,
+      phase: st.phase,
+      csat_group: yr.csat_group ?? null,
+      basis: st.admission_basis,
+      rural_type: st.rural_type,
+      groups: st.rural_eligible_groups || [],
+      elements: st.selection_elements || [],
+      interview: st.has_interview,
+      interviewNote: st.interview_note || (st.has_interview ? "있음" : "없음"),
+      csatMin: st.csat_minimum,
+      csatMinDetail: st.csat_minimum_detail || st.csat_minimum_note || (st.csat_minimum ? "" : "미적용"),
+      total: yr.track_total_quota,
+      totalNote: yr.track_total_note || "",
+      rural: yr.rural_quota ?? null,
+      ruralStatus: yr.rural_quota_status || "pending",
+      unitNote: st.unit_note || st.selection_note || "",
+      evidence: { page: ev.page, method: ev.method, confidence: ev.confidence },
+      desc: st.description || ""
+    };
+  });
+  return {
+    id: meta.university_id,
+    name: structure.university || meta.university,
+    region: structure.region || meta.region,
+    category: meta.category,
+    pdf: `../data/raw_data/${yearly.year}/${meta.university_id}.pdf`,
+    tracks
+  };
+}
+
+async function loadData() {
+  app.innerHTML = '<div class="loading">데이터 불러오는 중…</div>';
+  try {
+    const meta = await fetch('../universities.json').then(r => r.json());
+    DATA.year = meta.active_year;
+    const year = meta.active_year;
+    DATA.universities = await Promise.all(
+      meta.universities
+        .filter(u => u.status === 'complete')
+        .map(async u => {
+          const [structure, yearly, evidence] = await Promise.all([
+            fetch(`../data/structures/${u.university_id}.json`).then(r => r.json()),
+            fetch(`../data/yearly/${year}/${u.university_id}.json`).then(r => r.json()),
+            fetch(`../data/evidence/${u.university_id}.json`).then(r => r.json())
+          ]);
+          return mergeUniversity(u, structure, yearly, evidence);
+        })
+    );
+    document.getElementById("yrTag").textContent = DATA.year + "학년도";
+    renderHome();
+  } catch(e) {
+    app.innerHTML = `<div class="wrap"><div class="err">
+      <b>데이터를 불러오지 못했습니다.</b><br>
+      로컬에서 열 때는 프로젝트 루트에서 <code>python3 -m http.server 8000</code> 실행 후
+      <code>http://localhost:8000/site/</code> 로 접속하세요.<br>
+      <small style="color:var(--ink-3)">${e.message}</small>
+    </div></div>`;
+  }
+}
 
 /* ===== router ===== */
 const app=document.getElementById("app");
@@ -358,11 +401,10 @@ function renderAI(){
   </div></div></div>`;
 }
 
-function pdf(id){ toast("원문 PDF는 배포 환경에서 "+uniById(id).pdf+" 로 연결됩니다."); }
+function pdf(id){ window.open(uniById(id).pdf, '_blank'); }
 let tmr; function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(tmr); tmr=setTimeout(()=>t.classList.remove("show"),3200); }
 
-document.getElementById("yrTag").textContent=DATA.year+"학년도";
-renderHome();
+loadData();
 </script>
 </body>
 </html>

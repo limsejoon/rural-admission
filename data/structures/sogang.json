@@ -1,0 +1,44 @@
+{
+  "university_id": "sogang",
+  "university": "서강대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "sogang_susi_gihoe",
+      "track_name": "학생부종합(기회균형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": [
+        "국가보훈대상자",
+        "농어촌학생",
+        "기초생활보장대상자",
+        "장애인대상자",
+        "자립지원대상자",
+        "북한이탈주민"
+      ],
+      "selection_elements": ["서류평가 100% (일괄합산)"],
+      "has_interview": false,
+      "interview_note": "없음 (서류 일괄합산, 단계 없음)",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "전 모집단위 (의학부 제외 가능 — 시행계획 확인 요)",
+      "description": "6개 대상 통합 전형. 농어촌은 포함 대상 중 하나."
+    },
+    {
+      "track_id": "sogang_jeongsi_rural",
+      "track_name": "수능(농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 100% (일괄합산)"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": true,
+      "csat_minimum_detail": "국어·수학·영어·탐구(사·과 1과목) 4개 영역 중 3개 영역 등급합 9 이내, 한국사 4등급 이내",
+      "unit_note": "모집단위별 입학정원의 10% 이내 선발. 선발단위로 실시(모집단위로 원서접수).",
+      "description": "정시 나군 농어촌 단독 전형. 수능최저 적용 있음."
+    }
+  ]
+}
