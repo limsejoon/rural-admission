@@ -3,6 +3,16 @@
   "year": 2028,
   "tracks": [
     {
+      "track_id": "ewha_susi_gihoe",
+      "track_total_quota": 164,
+      "track_total_note": "정원 내 164명. 국가보훈·기초수급자·차상위·한부모·농어촌·북한이탈주민 통합 전형.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "164명은 여러 그룹 통합 인원. 농어촌학생 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_ewha_susi_gihoe"
+    },
+    {
       "track_id": "ewha_jeongsi_rural",
       "track_total_quota": 117,
       "track_total_note": "정원 외 117명. 나군. 모집단위별 합산.",

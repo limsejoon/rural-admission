@@ -4,6 +4,21 @@
   "region": "서울",
   "tracks": [
     {
+      "track_id": "ewha_susi_gihoe",
+      "track_name": "학생부종합(고른기회전형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": ["국가보훈대상자", "기초생활수급자", "차상위계층", "한부모가족지원대상자", "농어촌학생", "북한이탈주민"],
+      "selection_elements": ["서류 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 내 164명. 농어촌학생은 국가보훈·기초수급자·차상위·한부모·북한이탈주민 등과 통합 선발. 농어촌 단독 인원 미상.",
+      "description": "수시 학생부종합 고른기회전형(정원 내). 서류 100%, 수능최저 없음. 농어촌학생 포함 6개 그룹 통합 164명."
+    },
+    {
       "track_id": "ewha_jeongsi_rural",
       "track_name": "수능/실기/실적(기회균형-농어촌학생)",
       "phase": "jeongsi",
