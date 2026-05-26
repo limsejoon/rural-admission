@@ -189,6 +189,22 @@
       "region": "부산",
       "status": "complete",
       "source_doc": "2028 대학입학전형 기본계획(공고용2)"
+    },
+    {
+      "university_id": "cnu",
+      "university": "충남대학교",
+      "category": "regional_national",
+      "region": "대전",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형 시행계획"
+    },
+    {
+      "university_id": "kangwon_wonju",
+      "university": "강원대학교(원주캠퍼스)",
+      "category": "regional_national",
+      "region": "강원",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형시행계획 (원주캠퍼스)"
     }
   ]
 }

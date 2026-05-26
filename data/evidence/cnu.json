@@ -1,0 +1,26 @@
+{
+  "ev_cnu_susi_opportunity1": {
+    "track_id": "cnu_susi_opportunity1",
+    "year": 2028,
+    "value": 77,
+    "value_meaning": "학생부교과 기회균형선발Ⅰ 전체 모집인원. 농어촌 단독 인원 아님.",
+    "source_pdf": "data/raw_data/2028/cnu.pdf",
+    "page": 3,
+    "page_range": "1-3, 10",
+    "method": "모집단위별 모집인원 합계 행의 학생부교과 기회균형선발Ⅰ 77명과 전형 상세의 지원자격 중 농어촌학생 포함 여부를 확인.",
+    "note": "학교생활기록부 교과 100%, 수능최저 미적용. 농어촌 단독 모집인원은 별도 명시되지 않음.",
+    "confidence": "verified"
+  },
+  "ev_cnu_susi_rural": {
+    "track_id": "cnu_susi_rural",
+    "year": 2028,
+    "value": 122,
+    "value_meaning": "수시 학생부종합Ⅲ 고른기회 특별전형 농어촌학생 단독 모집인원(정원외).",
+    "source_pdf": "data/raw_data/2028/cnu.pdf",
+    "page": 3,
+    "page_range": "1-3, 19-20, 35",
+    "method": "모집단위별 모집인원 합계 행의 학생부종합Ⅲ 농어촌 122명에서 추출. 전형 상세 페이지에서 농어촌 지원자격, 전형요소, 면접, 수능최저 미적용을 확인.",
+    "note": "1단계 서류 100%, 2단계 서류 약 66.7%+면접 약 33.3%. 수시 미충원 발생 시 정시 수능 농어촌학생·저소득층학생 전형으로 이월 선발.",
+    "confidence": "verified"
+  }
+}
