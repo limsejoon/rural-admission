@@ -176,6 +176,10 @@
 
 <div id="app"></div>
 
+<div class="wrap"><footer>
+  데이터는 각 대학 <b>입학전형 시행계획·모집요강 원문</b>에서 추출하고, 단과대학 합산으로 교차검증합니다.
+  확인되지 않은 숫자는 <b>추정하지 않고</b> "확인되지 않음"으로 표기합니다.
+</footer></div>
 
 <div class="toast" id="toast"></div>
 
@@ -274,18 +278,25 @@ function renderHome(){
       <h1 class="disp">지원할 수 있는 길을<br/><span class="u">한눈에</span> 찾으세요.</h1>
       <p class="lead">수십 페이지 PDF에 흩어진 농어촌 지원 경로를, 대학별로 정리했습니다. 모집인원·면접·수능최저를 한 화면에서.</p>
       <div class="choices">
-        <div class=”choice” onclick=”go('list')”>
-          <div class=”corner”></div>
-          <div class=”ic”>📖</div>
-          <h3 class=”disp”>그냥 보기</h3>
-          <div class=”go”>대학 목록 보기 →</div>
+        <div class="choice" onclick="go('list')">
+          <div class="corner"></div>
+          <div class="ic">📖</div>
+          <h3 class="disp">그냥 보기</h3>
+          <p>설치 없이 바로. 대학별 모집인원, 수시·정시, 면접·수능최저, 원문 PDF까지.</p>
+          <div class="go">대학 목록 보기 →</div>
         </div>
-        <div class=”choice b” onclick=”go('ai')”>
-          <div class=”corner”></div>
-          <div class=”ic”>🤖</div>
-          <h3 class=”disp”>AI와 함께 보기</h3>
-          <div class=”go”>AI Pack 알아보기 →</div>
+        <div class="choice b" onclick="go('ai')">
+          <div class="corner"></div>
+          <div class="ic">🤖</div>
+          <h3 class="disp">AI와 함께 보기</h3>
+          <p>자료를 AI에 올리고 내 상황으로 질문. “면접 없는 대학만”, “내 점수로 가능한 곳”.</p>
+          <div class="go">AI Pack 알아보기 →</div>
         </div>
+      </div>
+      <div class="trust">
+        <div class="t"><b>✓</b> 원문 PDF 기반 추출</div>
+        <div class="t"><b>✓</b> 단과대학 합산 교차검증</div>
+        <div class="t"><b>✓</b> 추정 없이 “확인되지 않음” 표기</div>
       </div>
     </section>
   </div></div>`;
@@ -301,7 +312,7 @@ function renderList(){
         const info=trackNum(t);
         return `<div class="pathrow">
           <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span><span class="tn">${t.name}</span></div>
-          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span></div>
+          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span> ${info.badge}</div>
         </div>`;
       }).join("");
     }).join("");
@@ -317,6 +328,7 @@ function renderList(){
   app.innerHTML=`<div class="view"><div class="wrap">
     <div class="pagehd"><span class="crumb mono" onclick="go('home')">← 처음</span><div class="sp"></div></div>
     <div class="pagehd"><h2 class="disp">대학 목록</h2></div>
+    <div class="note">숫자 옆 표시를 꼭 보세요 — <b>‘농어촌 별도 명시’</b>는 농어촌 몫이고, <b>‘전체 · 농어촌 미상’</b>은 여러 대상을 합친 전형 전체 인원이라 농어촌이 몇 명인지는 자료에 없다는 뜻입니다.</div>
     <div class="cards">${cards}</div>
   </div></div>`;
 }
