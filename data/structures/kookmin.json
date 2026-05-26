@@ -1,0 +1,22 @@
+{
+  "university_id": "kookmin",
+  "university": "국민대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "kookmin_susi_rural",
+      "track_name": "학생부종합(농어촌학생전형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["서류 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 100명. 12년 유형만 허용(초·중·고 전체 읍면·도서벽지 소재지 및 거주). 6년 유형 미적용. 정시에도 농어촌학생전형 있으나 수시 미충원 이월만(고정 인원 없음).",
+      "description": "수시 학생부종합 농어촌학생전형(정원 외). 서류100%, 수능최저 없음. 12년 유형만 100명. 정시 농어촌은 수시 미충원 이월만."
+    }
+  ]
+}

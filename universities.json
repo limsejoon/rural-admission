@@ -117,6 +117,22 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 대학입학전형 시행계획"
+    },
+    {
+      "university_id": "soongsil",
+      "university": "숭실대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 입학전형 시행계획 (2026.4.30.)"
+    },
+    {
+      "university_id": "kookmin",
+      "university": "국민대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형계획 주요사항 (2026.4.30.)"
     }
   ]
 }

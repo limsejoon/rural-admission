@@ -1,0 +1,16 @@
+{
+  "university_id": "kookmin",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "kookmin_susi_rural",
+      "track_total_quota": 100,
+      "track_total_note": "정원 외 100명. 12년 유형 단독.",
+      "rural_quota": 100,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 100명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_kookmin_susi_rural"
+    }
+  ]
+}
