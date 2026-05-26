@@ -351,8 +351,8 @@ function renderDetail(id){
       ${t.csatMin?`<div class="desc"><b>수능최저 기준</b> · ${t.csatMinDetail}</div>`:""}
       <div class="elem">${t.elements.map(e=>`<span class="e">${e}</span>`).join("")}</div>
       <div class="desc">${t.desc}</div>
-      <div class="deeper"><div class="tx"><b>단과대학·학과별 인원이 궁금하세요?</b> 웹 화면은 전형 단위까지만 보여줍니다. 단과대학별 분해와 “우리 학과는?” 같은 질문은 <b>AI와 함께 보기</b>에서.</div>
-        <button class="btn" onclick="go('ai')">🤖 AI로 묻기</button></div>
+      <div class=”deeper” style=”display:none”><div class=”tx”><b>단과대학·학과별 인원이 궁금하세요?</b> 웹 화면은 전형 단위까지만 보여줍니다. 단과대학별 분해와 “우리 학과는?” 같은 질문은 <b>AI와 함께 보기</b>에서.</div>
+        <button class=”btn” onclick=”go('ai')”>🤖 AI로 묻기</button></div>
       <div class="ev mono"><span>출처 · 2028 시행계획 ${t.evidence.page}쪽</span><span>·</span><span>${t.evidence.method}</span><span class="sp"></span>
         ${t.evidence.confidence==="verified"?'<span class="vbadge">검증됨</span>':'<span>미검수</span>'}</div>
     </div>`;
