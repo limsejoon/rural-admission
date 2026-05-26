@@ -1,0 +1,26 @@
+{
+  "ev_cau_susi_rural": {
+    "track_id": "cau_susi_rural",
+    "year": 2028,
+    "value": 141,
+    "value_meaning": "학생부종합(기회균형-농어촌학생) 전형 전체. 정원 내 71명 + 정원 외 70명.",
+    "source_pdf": "data/raw_data/2028/cau.pdf",
+    "page": 6,
+    "page_range": "6, 20",
+    "method": "한눈에 보는 전형(6쪽) '농어촌학생 71(정원 내) + 70(정원 외) = 141명' 확인. 전형 상세(20쪽) 서류100%, 면접 없음, 수능최저 미적용 확인.",
+    "note": "농어촌학생 단독 전형. 정원 내·외 혼합 구조가 타 대학과 다름. 서류100%, 면접·수능최저 없음.",
+    "confidence": "verified"
+  },
+  "ev_cau_jeongsi_rural": {
+    "track_id": "cau_jeongsi_rural",
+    "year": 2028,
+    "value": 82,
+    "value_meaning": "수능(기회균형-농어촌학생) 정원 외 82명.",
+    "source_pdf": "data/raw_data/2028/cau.pdf",
+    "page": 6,
+    "page_range": "6, 39, 40",
+    "method": "한눈에 보는 전형(6쪽) '농어촌학생 82명(정원 외)' 확인. 전형 상세(39쪽) 지원자격, (40쪽) 수능89%+출결11%, 수능최저 없음 확인.",
+    "note": "수능최저 없음. 수능89%+출결11%. 정원 외 전형.",
+    "confidence": "verified"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "university_id": "cau",
+  "university": "중앙대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "cau_susi_rural",
+      "track_name": "학생부종합(기회균형-농어촌학생)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["서류평가 100% (일괄합산)"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 내 71명 + 정원 외 70명 = 총 141명. 모집단위별 인원은 11~13쪽 참고.",
+      "description": "농어촌학생 단독 전형. 정원 내·외 혼합 선발. 서류평가 100%, 면접·수능최저 없음."
+    },
+    {
+      "track_id": "cau_jeongsi_rural",
+      "track_name": "수능(기회균형-농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 89%", "학생부(출결) 11%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 82명. 모집단위별 인원은 11~13쪽 참고.",
+      "description": "정시 농어촌학생 단독 전형(정원 외). 수능89%+출결11%. 수능최저 없음."
+    }
+  ]
+}

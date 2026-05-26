@@ -1,0 +1,26 @@
+{
+  "university_id": "cau",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "cau_susi_rural",
+      "track_total_quota": 141,
+      "track_total_note": "정원 내 71명 + 정원 외 70명. 농어촌학생 단독 전형.",
+      "rural_quota": 141,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 141명 전원이 농어촌 몫.",
+      "csat_group": null,
+      "evidence_id": "ev_cau_susi_rural"
+    },
+    {
+      "track_id": "cau_jeongsi_rural",
+      "track_total_quota": 82,
+      "track_total_note": "정원 외 82명. 농어촌학생 단독 전형.",
+      "rural_quota": 82,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 82명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_cau_jeongsi_rural"
+    }
+  ]
+}
