@@ -1,0 +1,26 @@
+{
+  "university_id": "konkuk",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "konkuk_susi_gihoe",
+      "track_total_quota": 80,
+      "track_total_note": "정원 내 80명. 국가보훈·농어촌·기초차상위 통합.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "80명은 국가보훈·농어촌·기초차상위 통합 인원. 농어촌 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_konkuk_susi_gihoe"
+    },
+    {
+      "track_id": "konkuk_jeongsi_rural",
+      "track_total_quota": 79,
+      "track_total_note": "정원 외 79명. 가군 34+나군 41+다군 4.",
+      "rural_quota": 79,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 79명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_konkuk_jeongsi_rural"
+    }
+  ]
+}

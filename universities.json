@@ -85,6 +85,22 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 대학입학전형시행계획(안)"
+    },
+    {
+      "university_id": "konkuk",
+      "university": "건국대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 입학전형 시행계획"
+    },
+    {
+      "university_id": "dongguk",
+      "university": "동국대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형 시행계획"
     }
   ]
 }

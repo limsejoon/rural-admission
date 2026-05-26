@@ -1,0 +1,26 @@
+{
+  "ev_dongguk_susi_gihoe": {
+    "track_id": "dongguk_susi_gihoe",
+    "year": 2028,
+    "value": 134,
+    "value_meaning": "수시 학생부교과(기회균형통합) 정원 외 134명. 국가보훈·농어촌·기초차상위·서해5도·자립지원 통합.",
+    "source_pdf": "data/raw_data/2028/dongguk.pdf",
+    "page": 19,
+    "page_range": "5, 19, 20",
+    "method": "신입학 전형 현황표(5쪽 이미지) 기회균형통합 정원 외 134명 확인. 전형 상세(19~20쪽) 지원자격 국가보훈·농어촌·기초차상위·서해5도·자립지원 5개 그룹 통합, 교과70%+서류30%, 수능최저 없음 확인.",
+    "note": "농어촌 단독 인원 미상. 134명은 5개 그룹 통합. 정원 외 전형.",
+    "confidence": "verified"
+  },
+  "ev_dongguk_jeongsi_rural": {
+    "track_id": "dongguk_jeongsi_rural",
+    "year": 2028,
+    "value": 94,
+    "value_meaning": "정시 수능(농어촌학생) 정원 외 합계 94명. 가군 39+나군 45+다군 10.",
+    "source_pdf": "data/raw_data/2028/dongguk.pdf",
+    "page": 29,
+    "page_range": "5, 29",
+    "method": "신입학 전형 현황표(5쪽 이미지) 농어촌학생 가39+나45+다10 확인. 전형 상세(29쪽) 총 94명, 수능100%, 수능최저 없음 확인.",
+    "note": "수능최저 없음. 수능100%. 가군 39+나군 45+다군 10=94명 합계.",
+    "confidence": "verified"
+  }
+}

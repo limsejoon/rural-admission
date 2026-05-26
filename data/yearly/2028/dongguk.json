@@ -1,0 +1,26 @@
+{
+  "university_id": "dongguk",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "dongguk_susi_gihoe",
+      "track_total_quota": 134,
+      "track_total_note": "정원 외 134명. 국가보훈·농어촌·기초차상위·서해5도·자립지원 통합.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "134명은 5개 그룹 통합 인원. 농어촌 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_dongguk_susi_gihoe"
+    },
+    {
+      "track_id": "dongguk_jeongsi_rural",
+      "track_total_quota": 94,
+      "track_total_note": "정원 외 94명. 가군 39+나군 45+다군 10.",
+      "rural_quota": 94,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 94명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_dongguk_jeongsi_rural"
+    }
+  ]
+}

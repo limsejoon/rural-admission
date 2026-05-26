@@ -1,0 +1,37 @@
+{
+  "university_id": "konkuk",
+  "university": "건국대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "konkuk_susi_gihoe",
+      "track_name": "학생부종합(기회균형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "included",
+      "rural_eligible_groups": ["국가보훈대상자", "농어촌학생", "기초생활수급자 및 차상위계층"],
+      "selection_elements": ["서류 70%", "학생부(교과정량) 30%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 내 80명. 국가보훈·농어촌·기초차상위 통합 전형. 농어촌 단독 인원 미상.",
+      "description": "수시 학생부종합 기회균형전형(정원 내). 서류70%+교과정량30%, 수능최저 없음. 국가보훈·농어촌·기초차상위 통합 80명."
+    },
+    {
+      "track_id": "konkuk_jeongsi_rural",
+      "track_name": "수능(농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 79명. 가군 34명·나군 41명·다군 4명 (모집단위별 군 상이).",
+      "description": "정시 농어촌학생 단독 전형(정원 외). 수능100%, 수능최저 없음. 가군 34+나군 41+다군 4=79명."
+    }
+  ]
+}
