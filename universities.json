@@ -77,6 +77,14 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 입학전형 시행계획"
+    },
+    {
+      "university_id": "hufs",
+      "university": "한국외국어대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형시행계획(안)"
     }
   ]
 }

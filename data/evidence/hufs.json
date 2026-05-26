@@ -1,0 +1,26 @@
+{
+  "ev_hufs_susi_gihoe": {
+    "track_id": "hufs_susi_gihoe",
+    "year": 2028,
+    "value": 189,
+    "value_meaning": "수시 학생부종합(기회균형전형) 서울·글로벌 캠퍼스 합산 189명. 기초생활·국가보훈·농어촌·서해5도 통합.",
+    "source_pdf": "data/raw_data/2028/hufs.pdf",
+    "page": null,
+    "page_range": "전형계획 모집인원 표",
+    "method": "PDF 전형계획표에서 학생부종합(기회균형전형) 서울·글로벌 합산 189명 확인. 서류100%, 수능최저 없음, 기초·국가보훈·농어촌·서해5도 통합 전형임을 확인. 농어촌 단독 인원은 PDF에서 미제공.",
+    "note": "농어촌 별도 인원 미상. 189명은 기초생활수급자·차상위계층·국가보훈·농어촌·서해5도 합산. 서울 캠퍼스 단독 인원 미제공.",
+    "confidence": "verified"
+  },
+  "ev_hufs_jeongsi_rural": {
+    "track_id": "hufs_jeongsi_rural",
+    "year": 2028,
+    "value": 101,
+    "value_meaning": "정시 수능(농어촌학생 특별전형) 서울·글로벌 캠퍼스 합산 101명 (정원 외). 나군.",
+    "source_pdf": "data/raw_data/2028/hufs.pdf",
+    "page": null,
+    "page_range": "정시 전형계획 모집인원 표",
+    "method": "PDF 정시 전형계획표에서 농어촌학생 특별전형 서울·글로벌 합산 101명 확인. 수능100%, 수능최저 없음, 나군. 서울 캠퍼스 단독 인원은 모집단위별 '이내' 방식으로만 제공되어 합산 불가.",
+    "note": "수능최저 없음. 수능100%. 나군. 101명은 서울·글로벌 양 캠퍼스 합산. 서울 캠퍼스 단독 분리 불가(이내 방식 제공).",
+    "confidence": "verified"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "university_id": "hufs",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "hufs_susi_gihoe",
+      "track_total_quota": 189,
+      "track_total_note": "서울·글로벌 캠퍼스 합산 189명. 기초생활·국가보훈·농어촌·서해5도 통합 전형.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "189명은 기초생활수급자·차상위계층·국가보훈·농어촌·서해5도 합산. 농어촌 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_hufs_susi_gihoe"
+    },
+    {
+      "track_id": "hufs_jeongsi_rural",
+      "track_total_quota": 101,
+      "track_total_note": "서울·글로벌 캠퍼스 합산 101명 (정원 외). 나군.",
+      "rural_quota": 101,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 101명 전원이 농어촌 몫. 단, 서울·글로벌 양 캠퍼스 합산 수치이며 서울 캠퍼스 단독 분리 불가.",
+      "csat_group": "na",
+      "evidence_id": "ev_hufs_jeongsi_rural"
+    }
+  ]
+}
