@@ -301,7 +301,7 @@ function renderList(){
       return ts.map(t=>{
         const info=trackNum(t);
         return `<div class="pathrow">
-          <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span><span class="tn">${t.name}</span></div>
+          <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span></div>
           <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span></div>
         </div>`;
       }).join("");
