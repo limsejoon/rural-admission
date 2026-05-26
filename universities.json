@@ -173,6 +173,22 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 대학입학전형 시행계획 주요사항"
+    },
+    {
+      "university_id": "knu",
+      "university": "경북대학교",
+      "category": "regional_national",
+      "region": "대구",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형 시행계획(안)"
+    },
+    {
+      "university_id": "pnu",
+      "university": "부산대학교",
+      "category": "regional_national",
+      "region": "부산",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형 기본계획(공고용2)"
     }
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "university_id": "pnu",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "pnu_susi_rural_subject",
+      "track_total_quota": 134,
+      "track_total_note": "학생부교과(농어촌학생전형) 모집인원. 정원외.",
+      "rural_quota": 134,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "농어촌학생전형 단독 모집인원으로 명시됨.",
+      "csat_group": null,
+      "evidence_id": "ev_pnu_susi_rural_subject"
+    },
+    {
+      "track_id": "pnu_susi_social",
+      "track_total_quota": 150,
+      "track_total_note": "학생부종합(사회배려자전형) 전체 모집인원. 농어촌 포함 여러 지원자격 합산.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "농어촌은 사회배려자전형 지원자격 중 하나이나, 농어촌 단독 인원은 표에 명시되지 않음.",
+      "csat_group": null,
+      "evidence_id": "ev_pnu_susi_social"
+    },
+    {
+      "track_id": "pnu_susi_rural_practical",
+      "track_total_quota": 9,
+      "track_total_note": "실기/실적(농어촌학생전형) 모집인원. 정원외.",
+      "rural_quota": 9,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "농어촌학생전형 단독 모집인원으로 명시됨.",
+      "csat_group": null,
+      "evidence_id": "ev_pnu_susi_rural_practical"
+    }
+  ]
+}

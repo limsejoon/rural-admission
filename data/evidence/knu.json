@@ -1,0 +1,14 @@
+{
+  "ev_knu_susi_rural": {
+    "track_id": "knu_susi_rural",
+    "year": 2028,
+    "value": 190,
+    "value_meaning": "수시 학생부종합 농어촌학생전형 단독 모집인원(정원외).",
+    "source_pdf": "data/raw_data/2028/knu.pdf",
+    "page": 35,
+    "page_range": "35-36, 49-50",
+    "method": "전형 상세 페이지의 '학생부종합 농어촌학생전형' 모집인원 190명에서 추출. 전형요소와 면접은 35~36쪽, 수능최저 예외는 36쪽 및 49~50쪽에서 확인.",
+    "note": "1단계 서류 100%, 2단계 서류 70%+면접 30%. 수능최저는 원칙적으로 없으나 치의예과·약학과는 적용.",
+    "confidence": "verified"
+  }
+}

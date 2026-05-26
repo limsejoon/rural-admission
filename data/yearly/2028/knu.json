@@ -1,0 +1,16 @@
+{
+  "university_id": "knu",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "knu_susi_rural",
+      "track_total_quota": 190,
+      "track_total_note": "학생부종합 농어촌학생전형 모집인원. 정원외.",
+      "rural_quota": 190,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "농어촌학생전형 단독 모집인원으로 명시됨.",
+      "csat_group": null,
+      "evidence_id": "ev_knu_susi_rural"
+    }
+  ]
+}

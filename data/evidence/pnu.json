@@ -1,0 +1,38 @@
+{
+  "ev_pnu_susi_rural_subject": {
+    "track_id": "pnu_susi_rural_subject",
+    "year": 2028,
+    "value": 134,
+    "value_meaning": "수시 학생부교과 농어촌학생전형 단독 모집인원(정원외).",
+    "source_pdf": "data/raw_data/2028/pnu.pdf",
+    "page": 5,
+    "page_range": "5, 7-9, 13",
+    "method": "전형 구성 표의 학생부교과 농어촌학생전형 모집인원 134명에서 추출. 모집단위별 표와 전형 상세 페이지에서 전형요소 및 수능최저 미적용 확인.",
+    "note": "일괄합산 학생부 교과 80% + 학업역량평가 20%, 수능최저 미적용.",
+    "confidence": "verified"
+  },
+  "ev_pnu_susi_social": {
+    "track_id": "pnu_susi_social",
+    "year": 2028,
+    "value": 150,
+    "value_meaning": "학생부종합 사회배려자전형 전체 모집인원. 농어촌 단독 인원 아님.",
+    "source_pdf": "data/raw_data/2028/pnu.pdf",
+    "page": 21,
+    "page_range": "5, 21",
+    "method": "전형 구성 표의 사회배려자전형 모집인원 150명과 전형 상세의 지원자격 중 농어촌학생 포함 여부를 확인.",
+    "note": "서류평가 100%, 수능최저 미적용. 농어촌 단독 모집인원은 별도 명시되지 않음.",
+    "confidence": "verified"
+  },
+  "ev_pnu_susi_rural_practical": {
+    "track_id": "pnu_susi_rural_practical",
+    "year": 2028,
+    "value": 9,
+    "value_meaning": "수시 실기/실적 농어촌학생전형 단독 모집인원(정원외).",
+    "source_pdf": "data/raw_data/2028/pnu.pdf",
+    "page": 23,
+    "page_range": "5, 9, 23-25",
+    "method": "전형 구성 표와 실기/실적 전형 상세 페이지의 농어촌학생전형 모집인원 9명에서 추출. 모집단위별 표와 수능최저 미적용 문구 확인.",
+    "note": "예술·체육 모집단위 실기/실적 전형. 수능최저 미적용, 미충원 인원은 정시 이월하지 않음.",
+    "confidence": "verified"
+  }
+}
