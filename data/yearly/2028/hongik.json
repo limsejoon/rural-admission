@@ -1,0 +1,26 @@
+{
+  "university_id": "hongik",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "hongik_susi_rural",
+      "track_total_quota": 40,
+      "track_total_note": "정원 외 40명 (서울캠퍼스). 농어촌학생 단독.",
+      "rural_quota": 40,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 40명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_hongik_susi_rural"
+    },
+    {
+      "track_id": "hongik_jeongsi_rural",
+      "track_total_quota": 46,
+      "track_total_note": "정원 외 46명 (서울캠퍼스). 다군 중심.",
+      "rural_quota": 46,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 46명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_hongik_jeongsi_rural"
+    }
+  ]
+}

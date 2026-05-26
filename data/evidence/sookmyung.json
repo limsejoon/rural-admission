@@ -1,0 +1,26 @@
+{
+  "ev_sookmyung_susi_gihoe": {
+    "track_id": "sookmyung_susi_gihoe",
+    "year": 2028,
+    "value": 55,
+    "value_meaning": "수시 학생부종합(기회균형전형) 정원 내 55명. 국가보훈·기초수급자·농어촌·자립지원 통합.",
+    "source_pdf": "data/raw_data/2028/sookmyung.pdf",
+    "page": 3,
+    "page_range": "3, 9",
+    "method": "전형별 모집인원 표(3쪽) 기회균형전형 정원 내 55명 확인. 지원자격(9쪽) 국가보훈·기초수급자·농어촌학생·자립지원 4개 그룹 통합 확인. 서류100%, 수능최저 없음.",
+    "note": "농어촌 단독 인원 미상. 55명은 4개 그룹 통합. 정원 내 전형.",
+    "confidence": "verified"
+  },
+  "ev_sookmyung_susi_rural": {
+    "track_id": "sookmyung_susi_rural",
+    "year": 2028,
+    "value": 63,
+    "value_meaning": "수시 학생부종합(농어촌학생전형) 정원 외 63명.",
+    "source_pdf": "data/raw_data/2028/sookmyung.pdf",
+    "page": 3,
+    "page_range": "3, 5, 9, 10",
+    "method": "전형별 모집인원 표(3쪽) 농어촌학생전형 정원 외 63명 확인. 전형방법 총괄표(5쪽) 서류100% 확인. 지원자격(9·10쪽) 농어촌학생 단독 전형 확인. 수능최저 없음. 미충원 인원 정시 가군으로 이월.",
+    "note": "수능최저 없음. 서류100%. 정원 외 63명. 미충원 인원은 정시 수능(농어촌학생전형) 가군으로 이월되나 정시는 고정 인원 없음.",
+    "confidence": "verified"
+  }
+}

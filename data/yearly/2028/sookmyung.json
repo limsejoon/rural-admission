@@ -1,0 +1,26 @@
+{
+  "university_id": "sookmyung",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "sookmyung_susi_gihoe",
+      "track_total_quota": 55,
+      "track_total_note": "정원 내 55명. 국가보훈·기초수급자·농어촌·자립지원 통합.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "55명은 4개 그룹 통합 인원. 농어촌 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_sookmyung_susi_gihoe"
+    },
+    {
+      "track_id": "sookmyung_susi_rural",
+      "track_total_quota": 63,
+      "track_total_note": "정원 외 63명. 농어촌학생 단독.",
+      "rural_quota": 63,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 63명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_sookmyung_susi_rural"
+    }
+  ]
+}
