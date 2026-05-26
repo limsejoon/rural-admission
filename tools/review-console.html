@@ -164,6 +164,13 @@
   <div class="field"><label>분류</label>
     <select id="ucat"><option value="in_seoul">in_seoul</option><option value="regional_national">regional_national</option></select>
   </div>
+  <div class="field">
+    <label>Anthropic API 키</label>
+    <div style="display:flex;gap:4px;align-items:center">
+      <input id="apikey" type="password" placeholder="sk-ant-..." style="min-width:200px;font-family:'JetBrains Mono',monospace;font-size:12px" />
+      <button class="ghost" id="toggleKey" style="padding:7px 9px;font-size:11px">보기</button>
+    </div>
+  </div>
   <button class="ghost filebtn">＋ PDF 불러오기<input id="pdfin" type="file" accept="application/pdf" /></button>
   <button class="go" id="extractBtn">✦ AI 추출</button>
   <button class="ghost filebtn">↥ JSON 불러오기<input id="jsonin" type="file" accept="application/json,.json" /></button>
@@ -202,6 +209,16 @@
 </main>
 
 <script>
+/* ---------- API key ---------- */
+const apikeyEl = document.getElementById("apikey");
+apikeyEl.value = localStorage.getItem("anthropic_api_key") || "";
+apikeyEl.addEventListener("input", ()=> localStorage.setItem("anthropic_api_key", apikeyEl.value.trim()));
+document.getElementById("toggleKey").addEventListener("click", ()=>{
+  const show = apikeyEl.type === "password";
+  apikeyEl.type = show ? "text" : "password";
+  document.getElementById("toggleKey").textContent = show ? "숨기기" : "보기";
+});
+
 /* ---------- state ---------- */
 let state = { tracks: [] };
 let pdfBase64 = null, pdfMime = "application/pdf";
@@ -255,13 +272,21 @@ function normalizeImport(obj){
 $("extractBtn").addEventListener("click", runExtraction);
 async function runExtraction(){
   if(!pdfBase64){ flash("먼저 PDF를 불러오세요. (AI 추출은 불러온 PDF를 읽습니다)","err"); return; }
+  const apiKey = localStorage.getItem("anthropic_api_key") || "";
+  if(!apiKey){ flash("API 키를 입력하세요. Anthropic Console(console.anthropic.com)에서 발급한 <code>sk-ant-...</code> 키를 위 입력란에 붙여넣으면 브라우저에 저장됩니다.","err"); return; }
   const btn=$("extractBtn"); const old=btn.innerHTML; btn.disabled=true; btn.innerHTML='<span class="spin"></span>추출 중…';
   flash("PDF를 읽어 스키마·규칙대로 추출하고 있습니다. 표가 많은 문서는 20~40초 걸릴 수 있어요.","info");
   try{
     const res = await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST", headers:{"Content-Type":"application/json"},
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "x-api-key": apiKey,
+        "anthropic-version":"2023-06-01",
+        "anthropic-dangerous-direct-browser-access":"true"
+      },
       body: JSON.stringify({
-        model:"claude-sonnet-4-20250514", max_tokens:8000,
+        model:"claude-sonnet-4-6", max_tokens:8000,
         messages:[{ role:"user", content:[
           { type:"document", source:{ type:"base64", media_type:pdfMime, data:pdfBase64 } },
           { type:"text", text: EXTRACTION_PROMPT }
@@ -278,7 +303,10 @@ async function runExtraction(){
     const n = (obj.tracks||[]).length;
     flash("추출 완료 — 농어촌 관련 전형 <b>"+n+"개</b>를 찾았습니다. 모두 <span class='pill unverified'>unverified</span>이니 PDF와 대조 후 검수완료 처리하세요.","ok");
   }catch(err){
-    flash("AI 추출 실패: "+err.message+"<br/><span style='font-size:11.5px'>이 기능은 Claude 아티팩트 환경에서 동작합니다. 외부에서 열었다면 추출은 로컬에서 수행하고 <b>JSON 불러오기</b>로 이어가세요.</span>","err");
+    const hint = err.message.includes("401") ? "API 키가 잘못됐거나 만료됐습니다. 키를 다시 확인하세요."
+                : err.message.includes("Failed to fetch") ? "네트워크 오류입니다. 인터넷 연결을 확인하세요."
+                : err.message;
+    flash("AI 추출 실패: "+hint,"err");
   }finally{ btn.disabled=false; btn.innerHTML=old; }
 }
 
