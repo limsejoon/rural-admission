@@ -69,6 +69,14 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 입학전형 시행계획 (2026.4.30.)"
+    },
+    {
+      "university_id": "uos",
+      "university": "서울시립대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 입학전형 시행계획"
     }
   ]
 }

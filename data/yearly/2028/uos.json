@@ -1,0 +1,16 @@
+{
+  "university_id": "uos",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "uos_jeongsi_rural",
+      "track_total_quota": 34,
+      "track_total_note": "정원 외 34명. 기회균형전형Ⅱ 농어촌학생 특별전형.",
+      "rural_quota": 34,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 34명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_uos_jeongsi_rural"
+    }
+  ]
+}

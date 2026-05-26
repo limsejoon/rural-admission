@@ -1,0 +1,22 @@
+{
+  "university_id": "uos",
+  "university": "서울시립대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "uos_jeongsi_rural",
+      "track_name": "기회균형전형Ⅱ(농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 80%", "학생부교과 18%", "출결 2%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 34명. 모집단위별 가/나군 상이(수능 일반전형 군과 동일). 수시 기회균형전형Ⅰ(132명)은 농어촌 미포함.",
+      "description": "정시 농어촌학생 단독 기회균형전형(정원 외). 수능80%+학생부교과18%+출결2%. 수능최저 없음. 군은 모집단위별 가/나군."
+    }
+  ]
+}
