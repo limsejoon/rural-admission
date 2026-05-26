@@ -1,0 +1,16 @@
+{
+  "university_id": "seoultech",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "seoultech_susi_rural",
+      "track_total_quota": 68,
+      "track_total_note": "정원 외 68명. 기회균형전형 내 농어촌학생 단독 배정.",
+      "rural_quota": 68,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 68명 전원 농어촌.",
+      "csat_group": "na",
+      "evidence_id": "ev_seoultech_susi_rural"
+    }
+  ]
+}

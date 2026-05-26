@@ -1,0 +1,22 @@
+{
+  "university_id": "seoultech",
+  "university": "서울과학기술대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "seoultech_susi_rural",
+      "track_name": "학생부종합(농어촌학생전형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["1단계 서류 100%(3배수)", "2단계 1단계성적 70%+면접 30%"],
+      "has_interview": true,
+      "interview_note": "2단계: 1단계 성적 70% + 면접 30%",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 68명. 기회균형전형 내 농어촌학생 단독 전형. 6년형·12년형 모두 허용. 정시 농어촌학생전형은 수시 미충원 이월만(수능100%, 가·나군).",
+      "description": "수시 학생부종합 농어촌학생전형(기회균형 내, 정원 외). 1단계 서류100%(3배수), 2단계 1단계성적70%+면접30%. 수능최저 없음. 68명."
+    }
+  ]
+}

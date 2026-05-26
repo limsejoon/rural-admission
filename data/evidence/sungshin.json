@@ -1,0 +1,26 @@
+{
+  "ev_sungshin_susi_gihoe": {
+    "track_id": "sungshin_susi_gihoe",
+    "year": 2028,
+    "value": 110,
+    "value_meaning": "수시 학생부종합(기회균형Ⅰ전형) 정원 내 110명. 국가보훈대상자·농어촌학생·특성화고교출신자 3개 그룹 통합.",
+    "source_pdf": "data/raw_data/2028/sungshin.pdf",
+    "page": 3,
+    "page_range": "2, 3, 4",
+    "method": "전형유형별 모집인원표에서 기회균형Ⅰ전형 110명 확인. 지원자격에서 국가보훈대상자·농어촌학생·특성화고교출신자 3개 그룹 통합 확인. 전형요소 서류(학생부)100% 일괄합산, 수능최저 없음 확인.",
+    "note": "농어촌 단독 인원 미상. 110명은 3개 그룹 통합. 정원 내 전형.",
+    "confidence": "verified"
+  },
+  "ev_sungshin_jeongsi_rural": {
+    "track_id": "sungshin_jeongsi_rural",
+    "year": 2028,
+    "value": 68,
+    "value_meaning": "정시 수능(농어촌학생전형) 정원 외 68명. 가군 25명·나군 43명. 6년형·12년형 모두 허용.",
+    "source_pdf": "data/raw_data/2028/sungshin.pdf",
+    "page": 3,
+    "page_range": "3, 4, 5",
+    "method": "정시 모집단위별 인원표에서 농어촌학생전형 가군 25명·나군 43명 합계 68명 확인. 지원자격에서 6년형·12년형 모두 허용 확인. 농어촌 소재 특성화고·특목고 재학 사실 있으면 지원 불가 조건 확인. 전형요소 수능100%, 수능최저 없음 확인.",
+    "note": "가군 25+나군 43=68명. 농어촌 소재 특성화고·특목고 재학 이력 있으면 지원 불가. 6년형·12년형 모두 허용. 정원 외.",
+    "confidence": "verified"
+  }
+}
