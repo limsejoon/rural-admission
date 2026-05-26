@@ -79,16 +79,15 @@
   .card .ch .un{font-family:"Hahmlet",serif;font-size:24px;font-weight:700;letter-spacing:-.4px}
   .card .ch .rg{font-size:12px;color:var(--ink-3);font-family:"IBM Plex Mono",monospace}
   .card .cb{padding:8px 22px 6px}
-  .pathrow{padding:13px 0;border-bottom:1px solid var(--line)}
-  .pathrow:last-child{border-bottom:0}
-  .pathrow .lab{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-  .pathrow .ph{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:#fff;background:var(--pine-2);padding:2px 7px;border-radius:5px}
-  .pathrow .ph.j{background:var(--clay)}
-  .pathrow .tn{font-size:13.5px;color:var(--ink-2)}
-  .pathrow .num{display:flex;align-items:baseline;gap:8px;margin-top:2px}
-  .pathrow .num b{font-family:"Hahmlet",serif;font-size:27px;font-weight:700}
-  .pathrow .num .unit{font-size:13px;color:var(--ink-3)}
-  .pathrow .num .pre{font-size:13px;color:var(--ink-2);font-weight:600}
+  .phase-row{display:flex;padding:20px 22px 18px;gap:0}
+  .phase-block{flex:1;display:flex;flex-direction:column;gap:4px}
+  .phase-block+.phase-block{border-left:1px solid var(--line);padding-left:22px}
+  .phase-block .ph{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:#fff;background:var(--pine-2);padding:2px 7px;border-radius:5px;align-self:flex-start}
+  .phase-block .ph.j{background:var(--clay)}
+  .phase-num{display:flex;align-items:baseline;gap:5px;margin-top:6px}
+  .phase-num b{font-family:"Hahmlet",serif;font-size:32px;font-weight:700;line-height:1}
+  .phase-num .unit{font-size:13px;color:var(--ink-3)}
+  .phase-num .pre{font-size:12px;color:var(--ink-2);font-weight:600}
   .badge{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.3px;padding:3px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
   .badge.spec{background:var(--pine-soft);color:var(--pine);border-color:#bcd3bf}
   .badge.merg{background:var(--gold-soft);color:var(--gold);border-color:#e3cf9f}
@@ -298,17 +297,15 @@ function renderList(){
     const byPhase={susi:[],jeongsi:[]}; u.tracks.forEach(t=>byPhase[t.phase].push(t));
     const rows=["susi","jeongsi"].map(ph=>{
       const ts=byPhase[ph]; if(!ts.length) return "";
-      return ts.map(t=>{
+      const nums=ts.map(t=>{
         const info=trackNum(t);
-        return `<div class="pathrow">
-          <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span></div>
-          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span></div>
-        </div>`;
+        return `<div class="phase-num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span></div>`;
       }).join("");
+      return `<div class="phase-block"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span>${nums}</div>`;
     }).join("");
     return `<div class="card" style="animation-delay:${idx*70}ms">
       <div class="ch"><span class="un disp">${u.name}</span><span class="rg mono">${u.region}</span></div>
-      <div class="cb">${rows}</div>
+      <div class="phase-row">${rows}</div>
       <div class="cf">
         <button class="btn ghost" onclick="pdf('${u.id}')">PDF 원문</button>
         <button class="btn sp" onclick="go('detail:${u.id}')">자세히 →</button>
