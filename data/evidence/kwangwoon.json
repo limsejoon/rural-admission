@@ -1,0 +1,26 @@
+{
+  "ev_kwangwoon_susi_rural": {
+    "track_id": "kwangwoon_susi_rural",
+    "year": 2028,
+    "value": 40,
+    "value_meaning": "수시 학생부종합(농어촌학생전형) 정원 외 40명. 6년형·12년형 모두 허용.",
+    "source_pdf": "data/raw_data/2028/kwangwoon.pdf",
+    "page": 8,
+    "page_range": "7, 8, 9",
+    "method": "정원 외 특별전형 모집인원표에서 농어촌학생전형 40명 확인. 지원자격에서 6년형·12년형 모두 허용 확인. 전형요소 서류100%, 수능최저 없음 확인. 정시 농어촌학생전형은 수시 미충원 이월만 확인.",
+    "note": "6년형·12년형 모두 허용. 정시 농어촌은 수시 미충원 이월만(고정 인원 없음). 정원 외.",
+    "confidence": "verified"
+  },
+  "ev_kwangwoon_jeongsi_gihoe": {
+    "track_id": "kwangwoon_jeongsi_gihoe",
+    "year": 2028,
+    "value": 57,
+    "value_meaning": "정시 수능(기회균형전형) 정원 내 57명. 가군 38명·나군 19명. 기초차상위한부모·국가보훈·농어촌·특성화고·자립지원 5개 그룹 통합.",
+    "source_pdf": "data/raw_data/2028/kwangwoon.pdf",
+    "page": 6,
+    "page_range": "6, 14, 15",
+    "method": "정원 내 모집인원표(6쪽)에서 기회균형전형 가군 38명·나군 19명 합계 57명 확인. 지원자격에서 기초차상위한부모·국가보훈·농어촌·특성화고·자립지원 5개 그룹 통합 확인. 전형요소 수능100%, 수능최저 없음 확인.",
+    "note": "농어촌 단독 인원 미상. 가38+나19=57명. 5개 그룹 통합. 정원 내.",
+    "confidence": "verified"
+  }
+}

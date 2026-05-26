@@ -1,0 +1,26 @@
+{
+  "ev_sejong_susi_gihoe": {
+    "track_id": "sejong_susi_gihoe",
+    "year": 2028,
+    "value": 99,
+    "value_meaning": "수시 학생부종합(기회균형전형) 정원 내 99명. 국가보훈·기초차상위한부모·농어촌·특성화고·만학도·북한이탈주민 6개 그룹 통합.",
+    "source_pdf": "data/raw_data/2028/sejong.pdf",
+    "page": 5,
+    "page_range": "5, 6, 7",
+    "method": "전형유형별 모집인원표에서 기회균형전형 99명 확인. 지원자격에서 국가보훈·기초차상위한부모·농어촌·특성화고·만학도·북한이탈주민 6개 그룹 통합 확인. 전형요소 서류100%, 수능최저 없음 확인.",
+    "note": "농어촌 단독 인원 미상. 99명은 6개 그룹 통합. 정원 내 전형.",
+    "confidence": "verified"
+  },
+  "ev_sejong_jeongsi_rural": {
+    "track_id": "sejong_jeongsi_rural",
+    "year": 2028,
+    "value": 41,
+    "value_meaning": "정시 수능(농어촌학생전형) 정원 외 41명. 가군 28명·나군 13명.",
+    "source_pdf": "data/raw_data/2028/sejong.pdf",
+    "page": 12,
+    "page_range": "10, 12, 13",
+    "method": "정시 모집단위별 인원표에서 농어촌학생전형 가군 28명·나군 13명 합계 41명 확인. 다군은 수시 미충원 이월만(고정 인원 없음) 확인. 전형요소 수능100%, 수능최저 없음 확인.",
+    "note": "가군 28+나군 13=41명. 다군 이월만. 정원 외. 수능최저 없음.",
+    "confidence": "verified"
+  }
+}

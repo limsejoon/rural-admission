@@ -1,0 +1,26 @@
+{
+  "university_id": "kwangwoon",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "kwangwoon_susi_rural",
+      "track_total_quota": 40,
+      "track_total_note": "정원 외 40명. 6년형·12년형 모두 허용.",
+      "rural_quota": 40,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 40명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_kwangwoon_susi_rural"
+    },
+    {
+      "track_id": "kwangwoon_jeongsi_gihoe",
+      "track_total_quota": 57,
+      "track_total_note": "정원 내 57명. 가군 38명·나군 19명. 기초차상위한부모·국가보훈·농어촌·특성화고·자립지원 5개 그룹 통합.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "57명은 5개 그룹 통합 인원. 농어촌 단독 인원 미상.",
+      "csat_group": "가나",
+      "evidence_id": "ev_kwangwoon_jeongsi_gihoe"
+    }
+  ]
+}

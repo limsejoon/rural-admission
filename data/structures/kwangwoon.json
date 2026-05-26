@@ -1,0 +1,37 @@
+{
+  "university_id": "kwangwoon",
+  "university": "광운대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "kwangwoon_susi_rural",
+      "track_name": "학생부종합(농어촌학생전형)",
+      "phase": "susi",
+      "admission_basis": "학생부종합",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["서류 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외 40명. 6년형·12년형 모두 허용. 정시 농어촌학생전형은 수시 미충원 이월만(수능100%).",
+      "description": "수시 학생부종합 농어촌학생 단독 전형(정원 외). 서류100%, 수능최저 없음. 40명."
+    },
+    {
+      "track_id": "kwangwoon_jeongsi_gihoe",
+      "track_name": "수능(기회균형전형)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "included",
+      "rural_eligible_groups": ["기초생활수급자 및 차상위계층 및 한부모", "국가보훈대상자", "농어촌학생", "특성화고교 졸업자", "자립지원대상자"],
+      "selection_elements": ["수능 100%"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 내 57명. 가군 38명·나군 19명. 기초차상위한부모·국가보훈·농어촌·특성화고·자립지원 통합. 농어촌 단독 인원 미상.",
+      "description": "정시 수능 기회균형전형(정원 내). 수능100%, 수능최저 없음. 5개 그룹 통합 57명. 가군 38+나군 19."
+    }
+  ]
+}
