@@ -302,7 +302,7 @@ function renderList(){
         const info=trackNum(t);
         return `<div class="pathrow">
           <div class="lab"><span class="ph ${ph==='jeongsi'?'j':''}">${PHASE[ph]}</span><span class="tn">${t.name}</span></div>
-          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span> ${info.badge}</div>
+          <div class="num">${info.pre?`<span class="pre">${info.pre}</span>`:""}<b class="disp">${info.n}</b><span class="unit">명</span></div>
         </div>`;
       }).join("");
     }).join("");
@@ -318,7 +318,6 @@ function renderList(){
   app.innerHTML=`<div class="view"><div class="wrap">
     <div class="pagehd"><span class="crumb mono" onclick="go('home')">← 처음</span><div class="sp"></div></div>
     <div class="pagehd"><h2 class="disp">대학 목록</h2></div>
-    <div class="note">숫자 옆 표시를 꼭 보세요 — <b>‘농어촌 별도 명시’</b>는 농어촌 몫이고, <b>‘전체 · 농어촌 미상’</b>은 여러 대상을 합친 전형 전체 인원이라 농어촌이 몇 명인지는 자료에 없다는 뜻입니다.</div>
     <div class="cards">${cards}</div>
   </div></div>`;
 }
