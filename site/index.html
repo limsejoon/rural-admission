@@ -166,6 +166,7 @@
     padding:12px 18px;border-radius:10px;font-size:13.5px;opacity:0;pointer-events:none;transition:.3s;z-index:99;box-shadow:0 16px 40px -16px rgba(0,0,0,.6)}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -282,7 +283,7 @@ function renderHome(){
           <p>설치 없이 바로. 대학별 모집인원, 수시·정시, 면접·수능최저, 원문 PDF까지.</p>
           <div class="go">대학 목록 보기 →</div>
         </div>
-        <div class="choice b" style="cursor:default;opacity:.55;pointer-events:none">
+        <div class="choice b" onclick="go('ai')">
           <div class="corner"></div>
           <div class="ic">🤖</div>
           <h3 class="disp">AI와 함께 보기</h3>
@@ -351,7 +352,8 @@ function renderDetail(id){
       ${t.csatMin?`<div class="desc"><b>수능최저 기준</b> · ${t.csatMinDetail}</div>`:""}
       <div class="elem">${t.elements.map(e=>`<span class="e">${e}</span>`).join("")}</div>
       <div class="desc">${t.desc}</div>
-
+      <div class="deeper"><div class="tx"><b>단과대학·학과별 인원이 궁금하세요?</b> 웹 화면은 전형 단위까지만 보여줍니다. 단과대학별 분해와 "우리 학과는?" 같은 질문은 <b>AI와 함께 보기</b>에서.</div>
+        <button class="btn" onclick="go('ai')">🤖 AI로 묻기</button></div>
       <div class="ev mono"><span>출처 · 2028 시행계획 ${t.evidence.page}쪽</span><span>·</span><span>${t.evidence.method}</span><span class="sp"></span>
         ${t.evidence.confidence==="verified"?'<span class="vbadge">검증됨</span>':'<span>미검수</span>'}</div>
     </div>`;
@@ -376,7 +378,7 @@ function renderAI(){
       <div class="step"><span class="n disp">3</span><div class="tx"><b>파일 업로드 후 질문</b>“면접 없는 대학만”, “수능최저 없는 수시”처럼 자유롭게.</div></div>
     </div>
     <div class="ai-cta">
-      <button class="btn" onclick="toast('AI Pack은 배포 환경에서 ZIP으로 제공됩니다.')">⤓ AI Pack 다운로드</button>
+      <button class="btn" onclick="buildAndDownloadAIPack(this)">⤓ AI Pack 다운로드</button>
       <div class="ai-tags"><span class="tg">ChatGPT</span><span class="tg">Claude</span><span class="tg">Gemini</span></div>
     </div>
     <div class="qbox">
@@ -392,6 +394,34 @@ function renderAI(){
 
 function pdf(id){ window.open(uniById(id).pdf, '_blank'); }
 let tmr; function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(tmr); tmr=setTimeout(()=>t.classList.remove("show"),3200); }
+
+async function buildAndDownloadAIPack(btn){
+  const orig=btn.textContent;
+  btn.disabled=true; btn.textContent='⏳ 패킹 중...';
+  try{
+    const zip=new JSZip();
+    const folder=zip.folder('ai-pack-2028');
+    // 가이드 파일
+    try{ const g=await fetch('../data/ai-pack-guide.md'); if(g.ok) folder.file('사용법.md',await g.text()); }catch(e){}
+    // 데이터 레이어
+    const ids=['cau','cnu','dongguk','ewha','hanyang','hongik','hufs','kangwon_wonju','knu','konkuk','kookmin','korea','kwangwoon','pnu','sejong','seoultech','seoulwomen','skku','snu','sogang','sookmyung','soongsil','sungshin','uos','yonsei'];
+    const st=folder.folder('structures');
+    const yr=folder.folder('yearly').folder('2028');
+    const ev=folder.folder('evidence');
+    await Promise.all(ids.flatMap(id=>[
+      fetch(`../data/structures/${id}.json`).then(r=>r.ok?r.text():null).then(t=>t&&st.file(`${id}.json`,t)).catch(()=>{}),
+      fetch(`../data/yearly/2028/${id}.json`).then(r=>r.ok?r.text():null).then(t=>t&&yr.file(`${id}.json`,t)).catch(()=>{}),
+      fetch(`../data/evidence/${id}.json`).then(r=>r.ok?r.text():null).then(t=>t&&ev.file(`${id}.json`,t)).catch(()=>{})
+    ]));
+    const blob=await zip.generateAsync({type:'blob'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ai-pack-2028.zip'; a.click();
+    btn.textContent='✓ 다운로드 완료';
+    setTimeout(()=>{btn.disabled=false;btn.textContent=orig;},3000);
+  }catch(err){
+    toast('다운로드 중 오류가 발생했습니다.');
+    btn.disabled=false; btn.textContent=orig;
+  }
+}
 
 loadData();
 </script>

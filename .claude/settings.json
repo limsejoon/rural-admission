@@ -7,5 +7,8 @@
       "Bash(node /tmp/debug*)",
       "Bash(lsof -ti:*)"
     ]
+  },
+  "enabledPlugins": {
+    "harness@harness-marketplace": true
   }
 }
