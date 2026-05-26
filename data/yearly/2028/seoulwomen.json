@@ -1,0 +1,26 @@
+{
+  "university_id": "seoulwomen",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "seoulwomen_susi_gihoe",
+      "track_total_quota": 61,
+      "track_total_note": "정원 내 61명. 4개 그룹 통합.",
+      "rural_quota": null,
+      "rural_quota_status": "merged",
+      "rural_quota_note": "61명은 기초차상위한부모·국가보훈·자립지원·농어촌학생 통합 인원. 농어촌 단독 인원 미상.",
+      "csat_group": "na",
+      "evidence_id": "ev_seoulwomen_susi_gihoe"
+    },
+    {
+      "track_id": "seoulwomen_susi_rural",
+      "track_total_quota": 63,
+      "track_total_note": "정원 외 63명. 농어촌학생 단독 전형. 12년형만.",
+      "rural_quota": 63,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 전형. 63명 전원 농어촌.",
+      "csat_group": "na",
+      "evidence_id": "ev_seoulwomen_susi_rural"
+    }
+  ]
+}

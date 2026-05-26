@@ -165,6 +165,14 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 대학입학전형 기본계획 주요사항"
+    },
+    {
+      "university_id": "seoulwomen",
+      "university": "서울여자대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 대학입학전형 시행계획 주요사항"
     }
   ]
 }
