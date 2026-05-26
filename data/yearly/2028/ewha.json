@@ -1,0 +1,16 @@
+{
+  "university_id": "ewha",
+  "year": 2028,
+  "tracks": [
+    {
+      "track_id": "ewha_jeongsi_rural",
+      "track_total_quota": 117,
+      "track_total_note": "정원 외 117명. 나군. 모집단위별 합산.",
+      "rural_quota": 117,
+      "rural_quota_status": "specified",
+      "rural_quota_note": "전형 자체가 농어촌학생 단독 기회균형 전형. 117명 전원이 농어촌 몫.",
+      "csat_group": "na",
+      "evidence_id": "ev_ewha_jeongsi_rural"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "university_id": "ewha",
+  "university": "이화여자대학교",
+  "region": "서울",
+  "tracks": [
+    {
+      "track_id": "ewha_jeongsi_rural",
+      "track_name": "수능/실기/실적(기회균형-농어촌학생)",
+      "phase": "jeongsi",
+      "admission_basis": "수능",
+      "rural_type": "standalone",
+      "rural_eligible_groups": ["농어촌학생"],
+      "selection_elements": ["수능 100% (일반 모집단위)", "수능+실기 (예능 모집단위, 모집단위별 비율 상이)"],
+      "has_interview": false,
+      "interview_note": "없음",
+      "csat_minimum": false,
+      "csat_minimum_detail": "미적용",
+      "unit_note": "정원 외. 나군. 모집단위별 선발 여부 상이(7~8쪽 참고).",
+      "description": "정시 나군 농어촌학생 단독 기회균형 전형(정원 외). 일반 모집단위 수능100%, 예능 모집단위 수능+실기. 수능최저 없음."
+    }
+  ]
+}

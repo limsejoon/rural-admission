@@ -1,0 +1,14 @@
+{
+  "ev_ewha_jeongsi_rural": {
+    "track_id": "ewha_jeongsi_rural",
+    "year": 2028,
+    "value": 117,
+    "value_meaning": "정시 기회균형(농어촌학생) 전원 외 합계. 나군.",
+    "source_pdf": "data/raw_data/2028/ewha.pdf",
+    "page": 7,
+    "page_range": "7, 8, 19",
+    "method": "정시 기회균형 모집단위별 표(7~8쪽) 농어촌학생 합계 117명 확인. 전형 상세(19쪽) 나군·수능최저 없음·수능100%(일반)/수능+실기(예능) 확인.",
+    "note": "수능최저 없음. 나군. 일반 모집단위 수능100%, 예능 모집단위 수능+실기. 수시 기회균형 농어촌 전형 없음.",
+    "confidence": "verified"
+  }
+}

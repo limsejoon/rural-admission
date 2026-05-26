@@ -61,6 +61,14 @@
       "region": "서울",
       "status": "complete",
       "source_doc": "2028 입학전형 시행계획 (2026.4.)"
+    },
+    {
+      "university_id": "ewha",
+      "university": "이화여자대학교",
+      "category": "in_seoul",
+      "region": "서울",
+      "status": "complete",
+      "source_doc": "2028 입학전형 시행계획 (2026.4.30.)"
     }
   ]
 }
